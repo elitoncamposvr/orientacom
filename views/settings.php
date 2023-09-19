@@ -13,9 +13,4 @@
             <span class="text-xl font-semibold py-5 text-center">Permissões</span>
         </div>
     </a>
-    <a href="<?php echo BASE_URL; ?>users/clients">
-    <div class="card-home bg-slate-200">
-            <span class="text-xl font-semibold py-5 text-center">Clientes</span>
-        </div>
-    </a>
 </div>

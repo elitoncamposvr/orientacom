@@ -205,7 +205,7 @@ class WorkOrder extends model
 	{
 		$array = array();
 
-		$sql = $this->db->prepare("SELECT * FROM workorder WHERE customer LIKE '%$search%'");
+		$sql = $this->db->prepare("SELECT * FROM workorder WHERE customer LIKE '%$search%' OR brand LIKE '%$search%' OR model LIKE '%$search%' OR chassis LIKE '%$search%' OR license_plate LIKE '%$search%'");
 		$sql->execute();
 
 		if ($sql->rowCount() > 0) {
