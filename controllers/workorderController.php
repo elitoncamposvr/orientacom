@@ -160,20 +160,20 @@ class workorderController extends controller
 		header("Location: " . BASE_URL . "workorder");
 	}
 
-	// public function show($id)
-	// {
-	// 	$data = array();
-	// 	$u = new Users();
-	// 	$trf3 = new Trf3();
-	// 	$u->setLoggedUser();
+	public function show($id)
+	{
+		$data = array();
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
 
-	// 	if (!$u->hasPermission('trf3')) {
-	// 		header("Location: " . BASE_URL . "home/unauthorized");
-	// 	}
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
 
-	// 	$data['trf3_info'] = $trf3->getInfo($id);
-	// 	$this->loadTemplate('trf3_show', $data);
-	// }
+		$data['order_info'] = $order->getInfo($id);
+		$this->loadTemplate('workorder_show', $data);
+	}
 
 	public function search()
 	{
@@ -182,7 +182,7 @@ class workorderController extends controller
 		$order = new WorkOrder();
 		$u->setLoggedUser();
 
-		if (!$u->hasPermission('trf3')) {
+		if (!$u->hasPermission('workorder')) {
 			header("Location: " . BASE_URL . "home/unauthorized");
 		}
 
@@ -190,6 +190,20 @@ class workorderController extends controller
 
 		$data['list_search'] = $order->getSearch($search);
 		$this->loadTemplate("workorder_search", $data);
+	}
+
+	public function destroy($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$order->destroy($id);
+		header("Location: " . BASE_URL . "workorder");
 	}
 
 }

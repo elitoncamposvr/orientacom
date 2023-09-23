@@ -189,7 +189,7 @@ class WorkOrder extends model
 
 	public function destroy($id)
 	{
-		$sql = $this->db->prepare("DELETE FROM trf3 WHERE id = :id");
+		$sql = $this->db->prepare("DELETE FROM workorder WHERE id = :id");
 		$sql->bindValue(":id", $id);
 		$sql->execute();
 	}

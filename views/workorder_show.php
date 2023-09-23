@@ -1,105 +1,94 @@
 <div class="breadcrumb">
-    <span class="breadcrumb-title">TRF3 <i class="fa-solid fa-chevron-right px-2"></i> Visualizar</span>
+    <span class="breadcrumb-title">Ordem de Serviço nº <?php echo $order_info['id']; ?></span>
 </div>
 
-<div class="input-line">
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">#ID</span>
-        <?php echo $trf3_info['id'];?>
+<div class="input-line py-1.5">
+    <div class="w-8/12 mr-1">
+        <span class="font-bold pr-1">Cliente:</span>
+        <?php echo $order_info['customer']; ?>
     </div>
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">Procedimento</span>
-        <?php echo $trf3_info['procedimento'];?>
+    <div class="w-3/12 mr-1">
+        <span class="font-bold pr-1">Data:</span>
+        <?php echo date('d/m/Y H:i', strtotime($order_info['date_os'])); ?>
     </div>
-</div>
-<div class="input-line">
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">Ano Proposta</span>
-        <?php echo $trf3_info['ano_proposta'];?>
-    </div>
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">Número</span>
-        <?php echo $trf3_info['numero'];?>
-    </div>
-</div>
-<div class="input-line">
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">Ofício</span>
-        <?php echo $trf3_info['ofcreq'];?>
-    </div>
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">Proc. Origem</span>
-        <?php echo $trf3_info['proc_orig'];?>
-    </div>
-</div>
-<div class="input-line">
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">Requerido</span>
-        <?php echo $trf3_info['requerido'];?>
-    </div>
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">Requerentes</span>
-        <?php echo $trf3_info['requerentes'];?>
-    </div>
-</div>
-<div class="input-line">
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">Advogado</span>
-        <?php echo $trf3_info['advogado'];?>
-    </div>
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">Data Conta</span>
-        <?php echo $trf3_info['data_conta_liq'];?>
-    </div>
-</div>
-<div class="input-line">
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">Valor Solic.</span>
-        <?php echo $trf3_info['vlr_solicitado'];?>
-    </div>
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">Valor Inscrito</span>
-        <?php echo $trf3_info['vlr_inscritopr'];?>
-    </div>
-</div>
-<div class="input-line">
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">Req. Bloqueada</span>
-        <?php echo $trf3_info['req_bloqueada'];?>
-    </div>
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">Situação Req.</span>
-        <?php echo $trf3_info['situ_requisic'];?>
-    </div>
-</div>
-<div class="input-line">
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">Natureza</span>
-        <?php echo $trf3_info['natureza'];?>
-    </div>
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">CPF</span>
-        <?php echo $trf3_info['cpf'];?>
-    </div>
-</div>
-<div class="input-line">
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">Assunto</span>
-        <?php echo $trf3_info['assunto'];?>
-    </div>
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">Status</span>
-        <?php echo $trf3_info['status'];?>
-    </div>
-</div>
-<div class="input-line">
-    <div class="w-1/2">
-        <span class="mr-2 font-semibold">Histórico</span>
-        <?php echo $trf3_info['historico'];?>
+    <div class="w-1/12 text-right">
+        <span class="font-bold pr-1">OS Nº:</span>
+        <?php echo $order_info['id']; ?>
     </div>
 </div>
 
-<div class="input-line justify-center">
-    <a class="btn mx-1 hover:btn-hover" href="<?php echo BASE_URL; ?>trf3/edit/<?php echo $trf3_info['id'];?>"><i class="fa-solid fa-pen-to-square"></i> Editar Registro</a>
-    <a class="btn-danger mx-1 hover:btn-danger--hover" href="<?php echo BASE_URL; ?>trf3/destroy/<?php echo $trf3_info['id'];?>"><i class="fa-solid fa-pen-to-square"></i> Excluir Registro</a>
+<div class="input-line py-1.5">
+    <div class="w-3/12 mr-1">
+        <span class="font-bold pr-1">Marca:</span>
+        <?php echo $order_info['brand']; ?>
+    </div>
+    <div class="w-3/12 mr-1">
+        <span class="font-bold pr-1">Modelo: </span>
+        <?php echo $order_info['model']; ?>
+    </div>
+    <div class="w-2/12 mr-1">
+        <span class="font-bold pr-1">Ano:</span>
+        <?php echo $order_info['year']; ?>
+    </div>
+    <div class="w-2/12 mr-1">
+        <span class="font-bold pr-1">Cor:</span>
+        <?php echo $order_info['color']; ?>
+    </div>
+    <div class="w-2/12 text-right">
+        <span class="font-bold pr-1">KM:</span>
+        <?php echo $order_info['km']; ?>
+    </div>
+</div>
+
+<div class="input-line py-1.5">
+    <div class="w-3/12 mr-1">
+        <span class="font-bold pr-1">Chassi:</span>
+        <?php echo $order_info['chassis']; ?>
+    </div>
+    <div class="w-3/12 mr-1">
+        <span class="font-bold pr-1">Placa:</span>
+        <?php echo $order_info['license_plate']; ?>
+    </div>
+    <div class="w-2/12 mr-1">
+        <span class="font-bold pr-1">Transmissão:</span>
+        <?php echo $order_info['transmission']; ?>
+    </div>
+    <div class="w-2/12 mr-1">
+        <span class="font-bold pr-1">Combustível:</span>
+        <?php echo $order_info['fuel']; ?>
+    </div>
+    <div class="w-2/12 text-right">
+        <span class="font-bold pr-1">Potência:</span>
+        <?php echo $order_info['power']; ?>
+    </div>
+</div>
+
+<div class="input-line py-1.5">
+    <div class="w-6/12">
+        <span class="font-bold pr-1">Consultor Responsável:</span>
+        <?php echo $order_info['responsible_consultant']; ?>
+    </div>
+    <div class="w-6/12">
+        <span class="font-bold pr-1">Mecânico Responsável:</span>
+        <?php echo $order_info['responsible_mechanic']; ?>
+    </div>
+</div>
+
+<div class="input-line p-1.5 flex-col bg-slate-200 rounded-md">
+    <?php if ($order_info['aditional_info'] != '') : ?>
+        <div class="w-full font-bold">
+            Observações Gerais:
+        </div>
+        <div class="w-full">
+            <?php echo $order_info['aditional_info']; ?>
+        </div>
+    <?php endif; ?>
+</div>
+<div class="input-line justify-center items-center py-3">
+    <span class="px-1">
+        <a href="<?php echo BASE_URL; ?>workorder/edit/<?php echo $order_info['id']; ?>" class="btn">Editar</a>
+    </span>
+    <span class="px-1">
+        <a href="<?php echo BASE_URL; ?>workorder/destroy/<?php echo $order_info['id']; ?>" class="btn-danger hover:btn-danger--hover">Excluir</a>
+    </span>
 </div>

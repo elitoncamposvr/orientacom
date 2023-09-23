@@ -42,7 +42,7 @@
 			<div class="w-1/12"><?php echo $order['power']; ?></div>
 			<div class="w-1/12"><?php echo ($order['status'] == 1) ? 'Concluído' : 'Pendente'; ?></div>
 			<div class="w-1/12 text-center">
-				<a href="<?php echo BASE_URL; ?>workorder/edit/<?php echo $order['id']; ?>">
+				<a href="<?php echo BASE_URL; ?>workorder/show/<?php echo $order['id']; ?>">
 					<i class="fa-solid fa-up-right-from-square fa-lg"></i>
 				</a>
 			</div>
