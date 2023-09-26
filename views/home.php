@@ -8,7 +8,7 @@
 			</span>
 			<div class="rounded-md bg-amber-400 text-center py-2">
 				<span class="font-semibold">Processos:</span>
-				<!-- <?php echo $tsjp_count; ?> -->
+				<?php echo $workorder_count; ?>
 			</div>
 		</div>
 	</a>
@@ -19,18 +19,7 @@
 			</span>
 			<div class="rounded-md bg-slate-400 text-center py-2">
 				<span class="font-semibold">Processos:</span>
-				<!-- <?php echo $trf2_count; ?> -->
-			</div>
-		</div>
-	</a>
-	<a href="<?php echo BASE_URL; ?>trf3">
-		<div class="card-home bg-red-300">
-		<span class="text-center py-2 font-semibold text-lg">
-				TRF3
-			</span>
-			<div class="rounded-md bg-red-500 text-center py-2">
-				<span class="font-semibold">Processos:</span>
-				<!-- <?php echo $trf3_count; ?> -->
+				<?php echo $workorder_count; ?>
 			</div>
 		</div>
 	</a>

@@ -206,4 +206,61 @@ class workorderController extends controller
 		header("Location: " . BASE_URL . "workorder");
 	}
 
+	public function visualexterior_create($id){
+		$u = new Users();
+        $u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['workorder_id'] = $id;
+		$this->loadTemplate('workorder_visualexterior_create', $data);
+	}
+
+	// public function visualexterior_store()
+	// {
+	// 	$u = new Users();
+	// 	$order = new WorkOrder();
+	// 	$u->setLoggedUser();
+
+	// 	if (!$u->hasPermission('workorder')) {
+	// 		header("Location: " . BASE_URL . "home/unauthorized");
+	// 	}
+
+	// 	$customer = addslashes($_POST['customer']);
+	// 	$brand = addslashes($_POST['brand']);
+	// 	$model = addslashes($_POST['model']);
+	// 	$year = addslashes($_POST['year']);
+	// 	$color = addslashes($_POST['color']);
+	// 	$license_plate = addslashes($_POST['license_plate']);
+	// 	$chassis = addslashes($_POST['chassis']);
+	// 	$transmission = addslashes($_POST['transmission']);
+	// 	$fuel = addslashes($_POST['fuel']);
+	// 	$power = addslashes($_POST['power']);
+	// 	$km  = addslashes($_POST['km']);
+	// 	$responsible_consultant = addslashes($_POST['responsible_consultant']);
+	// 	$responsible_mechanic = addslashes($_POST['responsible_mechanic']);
+	// 	$aditional_info = addslashes($_POST['aditional_info']);
+
+	// 	$order->visualExteriorCeate(
+	// 		$u->getId(),
+	// 		$customer,
+	// 		$brand,
+	// 		$model,
+	// 		$year,
+	// 		$color,
+	// 		$license_plate,
+	// 		$chassis,
+	// 		$transmission,
+    //         $fuel,
+    //         $power,
+	// 		$km,
+	// 		$responsible_consultant,
+    //         $responsible_mechanic,
+    //         $aditional_info
+	// 	);
+	// 	header("Location: " . BASE_URL . "workorder");
+	// }
+
 }

@@ -32,7 +32,7 @@
     }
 
     .breadcrumb-title{
-        @apply w-1/2 text-2xl font-semibold;
+        @apply w-1/2 text-lg font-semibold;
     }
 
     .breadcrumb-btns{
@@ -106,8 +106,10 @@
     }
 
     select{
-        @apply border border-slate-300 py-2 px-4 rounded-md;
+        @apply border border-slate-300 py-1 px-2 rounded-md;
     }
+    
+
 
     label{
         @apply text-sm;

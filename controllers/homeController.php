@@ -16,8 +16,10 @@ class homeController extends controller
     {
         $data = array();
         $u = new Users();
+        $order = new WorkOrder();
 		$u->setLoggedUser();
         $data['username'] = $u->getName();
+        $data['workorder_count'] = $order->getCount();
 
         $this->loadTemplate('home', $data);
     }
