@@ -1,5 +1,10 @@
 <div class="breadcrumb">
     <span class="breadcrumb-title">Ordem de Serviço nº <?php echo $order_info['id']; ?></span>
+    <span class="breadcrumb-btns">
+        <span>
+            <a href="<?php echo BASE_URL; ?>workorder" class="btn-alert hover:btn-alert--hover"><i class="fa-solid fa-angles-left"></i> Voltar</a>
+        </span>
+    </span>
 </div>
 
 <div class="input-line py-1.5">
