@@ -194,6 +194,19 @@ class WorkOrder extends model
 		$sql->execute();
 	}
 
+	public function visualExteriorStatus($workorder_id){
+		$r = 0;
+
+		$sql = $this->db->prepare("SELECT COUNT(*) as sr FROM exterior_visual WHERE workorder_id = :workorder_id");
+		$sql->bindValue(":workorder_id", $workorder_id);
+		$sql->execute();
+		$row = $sql->fetch();
+
+		$r = $row['sr'];
+
+		return $r;
+	}
+
 	public function visualExteriorCreate(
 		$workorder_id,
 		$front_hood,

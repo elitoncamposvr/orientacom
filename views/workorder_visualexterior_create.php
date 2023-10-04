@@ -7,6 +7,17 @@
     </span>
 </div>
 
+<div class="input-line justify-between bg-slate-200 rounded-md p-2 font-semibold">
+    <span>(OK) - OK</span>
+    <span>(S) - Saliência</span>
+    <span>(F) - Ferrugem</span>
+    <span>(R) - Risco</span>
+    <span>(A) - Amassado</span>
+    <span>(I) - Impacto de pedras</span>
+    <span>(RT) - Retoque</span>
+    <span>(P) - Pintura</span>
+</div>
+
 <form class="w-full py-2.5 flex-col" action="<?php echo BASE_URL; ?>workorder/visualexterior_store/<?php echo $workorder_id; ?>" method="post">
     <div class="input-line">
         <div class="w-2/6 mr-1 flex-col bg-slate-200 rounded-md p-1">

@@ -171,6 +171,7 @@ class workorderController extends controller
 			header("Location: " . BASE_URL . "home/unauthorized");
 		}
 
+		$data['visual_exterior_status'] = $order->visualExteriorStatus($id);
 		$data['order_info'] = $order->getInfo($id);
 		$this->loadTemplate('workorder_show', $data);
 	}
