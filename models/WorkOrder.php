@@ -207,6 +207,20 @@ class WorkOrder extends model
 		return $r;
 	}
 
+	public function visualExteriorInfo($id){
+		$array = array();
+
+		$sql = $this->db->prepare("SELECT * FROM exterior_visual WHERE id = :id");
+		$sql->bindValue(":id", $id);
+		$sql->execute();
+
+		if ($sql->rowCount() > 0) {
+			$array = $sql->fetch();
+		}
+
+		return $array;
+	}
+
 	public function visualExteriorCreate(
 		$workorder_id,
 		$front_hood,
@@ -341,6 +355,210 @@ class WorkOrder extends model
 				");
 
 		$sql->bindValue(":workorder_id", $workorder_id);
+		$sql->bindValue(":front_hood", $front_hood);
+		$sql->bindValue(":front_hood_obs", $front_hood_obs);
+		$sql->bindValue(":rearview_mirror_right", $rearview_mirror_right);
+		$sql->bindValue(":rearview_mirror_right_obs", $rearview_mirror_right_obs);
+		$sql->bindValue(":rearview_mirror_left", $rearview_mirror_left);
+		$sql->bindValue(":rearview_mirror_left_obs", $rearview_mirror_left_obs);
+		$sql->bindvalue(":front_headlight_right", $front_headlight_right);
+		$sql->bindvalue(":front_headlight_right_obs", $front_headlight_right_obs);
+		$sql->bindValue(":front_headlight_left", $front_headlight_left);
+		$sql->bindValue(":front_headlight_left_obs", $front_headlight_left_obs);
+		$sql->bindValue(":front_bumper", $front_bumper);
+		$sql->bindValue(":front_bumper_obs", $front_bumper_obs);
+		$sql->bindValue(":front_fenders_right", $front_fenders_right);
+		$sql->bindValue(":front_fenders_right_obs", $front_fenders_right_obs);
+		$sql->bindValue(":front_fenders_left", $front_fenders_left);
+		$sql->bindValue(":front_fenders_left_obs", $front_fenders_left_obs);
+		$sql->bindValue(":front_window_right", $front_window_right);
+		$sql->bindValue(":front_window_right_obs", $front_window_right_obs);
+		$sql->bindValue(":front_window_left", $front_window_left);
+		$sql->bindValue(":front_window_left_obs", $front_window_left_obs);
+		$sql->bindValue(":front_door_right", $front_door_right);
+		$sql->bindValue(":front_door_right_obs", $front_door_right_obs);
+		$sql->bindValue(":front_door_left", $front_door_left);
+		$sql->bindValue(":front_door_left_obs", $front_door_left_obs);
+		$sql->bindValue(":rear_window_right", $rear_window_right);
+		$sql->bindValue(":rear_window_right_obs", $rear_window_right_obs);
+		$sql->bindValue(":rear_window_left", $rear_window_left);
+		$sql->bindValue(":rear_window_left_obs", $rear_window_left_obs);
+		$sql->bindValue(":rear_fenders_right", $rear_fenders_right);
+		$sql->bindValue(":rear_fenders_right_obs", $rear_fenders_right_obs);
+		$sql->bindValue(":rear_fenders_left", $rear_fenders_left);
+		$sql->bindValue(":rear_fenders_left_obs", $rear_fenders_left_obs);
+		$sql->bindValue(":rear_trunk_lid", $rear_trunk_lid);
+		$sql->bindValue(":rear_trunk_lid_obs", $rear_trunk_lid_obs);
+		$sql->bindValue(":upper_trunk_lid", $upper_trunk_lid);
+		$sql->bindValue(":upper_trunk_lid_obs", $upper_trunk_lid_obs);
+		$sql->bindValue(":taillight_right", $taillight_right);
+		$sql->bindValue(":taillight_right_obs", $taillight_right_obs);
+		$sql->bindValue(":taillight_left", $taillight_left);
+		$sql->bindValue(":taillight_left_obs", $taillight_left_obs);
+		$sql->bindValue(":rear_window", $rear_window);
+		$sql->bindValue(":rear_window_obs", $rear_window_obs);
+		$sql->bindValue(":front_windshield", $front_windshield);
+		$sql->bindValue(":front_windshield_obs", $front_windshield_obs);
+		$sql->bindValue(":rear_bumper", $rear_bumper);
+		$sql->bindValue(":rear_bumper_obs", $rear_bumper_obs);
+		$sql->bindValue(":rear_door_right", $rear_door_right);
+		$sql->bindValue(":rear_door_right_obs", $rear_door_right_obs);
+		$sql->bindValue(":rear_door_left", $rear_door_left);
+		$sql->bindValue(":rear_door_left_obs", $rear_door_left_obs);
+		$sql->bindValue(":roof", $roof);
+		$sql->bindValue(":roof_obs", $roof_obs);
+		$sql->bindValue(":convertible_top", $convertible_top);
+		$sql->bindValue(":convertible_top_obs", $convertible_top_obs);
+		$sql->bindValue(":protective_film", $protective_film);
+		$sql->bindValue(":protective_film_obs", $protective_film_obs);
+		$sql->bindValue(":airfoil", $airfoil);
+		$sql->bindValue(":airfoil_obs", $airfoil_obs);
+		$sql->bindValue(":accident_warning_sings", $accident_warning_sings);
+		$sql->bindValue(":accident_warning_sings_obs", $accident_warning_sings_obs);
+		$sql->bindValue(":observations", $observations);
+		$sql->execute();
+
+		$last_id = $this->db->lastInsertId();
+		$id = $workorder_id;
+
+		$sql2 = $this->db->prepare("UPDATE workorder SET visual_exterior_id = '$last_id' WHERE id = '$id'");
+		$sql2->execute();
+	}
+
+	public function visualExteriorUpdate(
+		$id,
+		$front_hood,
+		$front_hood_obs,
+		$rearview_mirror_right,
+		$rearview_mirror_right_obs,
+		$rearview_mirror_left,
+		$rearview_mirror_left_obs,
+		$front_headlight_right,
+		$front_headlight_right_obs,
+		$front_headlight_left,
+		$front_headlight_left_obs,
+		$front_bumper,
+		$front_bumper_obs,
+		$front_fenders_right,
+		$front_fenders_right_obs,
+		$front_fenders_left,
+		$front_fenders_left_obs,
+		$front_window_right,
+		$front_window_right_obs,
+		$front_window_left,
+		$front_window_left_obs,
+		$front_door_right,
+		$front_door_right_obs,
+		$front_door_left,
+		$front_door_left_obs,
+		$rear_window_right,
+		$rear_window_right_obs,
+		$rear_window_left,
+		$rear_window_left_obs,
+		$rear_fenders_right,
+		$rear_fenders_right_obs,
+		$rear_fenders_left,
+		$rear_fenders_left_obs,
+		$rear_trunk_lid,
+		$rear_trunk_lid_obs,
+		$upper_trunk_lid,
+		$upper_trunk_lid_obs,
+		$taillight_right,
+		$taillight_right_obs,
+		$taillight_left,
+		$taillight_left_obs,
+		$rear_window,
+		$rear_window_obs,
+		$front_windshield,
+		$front_windshield_obs,
+		$rear_bumper,
+		$rear_bumper_obs,
+		$rear_door_right,
+		$rear_door_right_obs,
+		$rear_door_left,
+		$rear_door_left_obs,
+		$roof,
+		$roof_obs,
+		$convertible_top,
+		$convertible_top_obs,
+		$protective_film,
+		$protective_film_obs,
+		$airfoil,
+		$airfoil_obs,
+		$accident_warning_sings,
+		$accident_warning_sings_obs,
+		$observations
+	) {
+		$sql = $this->db->prepare("
+			UPDATE
+				exterior_visual 
+			SET
+				front_hood = :front_hood, 
+				front_hood_obs = :front_hood_obs, 
+				rearview_mirror_right = :rearview_mirror_right, 
+				rearview_mirror_right_obs = :rearview_mirror_right_obs, 
+				rearview_mirror_left = :rearview_mirror_left, 
+				rearview_mirror_left_obs = :rearview_mirror_left_obs, 
+				front_headlight_right = :front_headlight_right, 
+				front_headlight_right_obs = :front_headlight_right_obs, 
+				front_headlight_left = :front_headlight_left, 
+				front_headlight_left_obs = :front_headlight_left_obs, 
+				front_bumper = :front_bumper, 
+				front_bumper_obs = :front_bumper_obs,
+				front_fenders_right = :front_fenders_right,
+				front_fenders_right_obs = :front_fenders_right,
+				front_fenders_left = :front_fenders_left,
+				front_fenders_left_obs = :front_fenders_left_obs,
+				front_window_right = :front_window_right,
+				front_window_right_obs = :front_window_right_obs,
+				front_window_left = :front_window_left,
+				front_window_left_obs = :front_window_left_obs,
+				front_door_right = :front_door_right,
+				front_door_right_obs = :front_door_right_obs,
+				front_door_left = :front_door_left,
+				front_door_left_obs = :front_door_left_obs,
+				rear_window_right = :rear_window_right,
+				rear_window_right_obs = :rear_window_right_obs,
+				rear_window_left = :rear_window_left,
+				rear_window_left_obs = :rear_window_left_obs,
+				rear_fenders_right = :rear_fenders_right,
+				rear_fenders_right_obs = :rear_fenders_right_obs,
+				rear_fenders_left = :rear_fenders_left,
+				rear_fenders_left_obs = :rear_fenders_left_obs,
+				rear_trunk_lid = :rear_trunk_lid,
+				rear_trunk_lid_obs = :rear_trunk_lid_obs,
+				upper_trunk_lid = :upper_trunk_lid,
+				upper_trunk_lid_obs = :upper_trunk_lid_obs,
+				taillight_right = :taillight_right,
+				taillight_right_obs = :taillight_right_obs,
+				taillight_left = :taillight_left,
+				taillight_left_obs = :taillight_left_obs,
+				rear_window = :rear_window,
+				rear_window_obs = :rear_window_obs,
+				front_windshield = :front_windshield,
+				front_windshield_obs = :front_windshield_obs,
+				rear_bumper = :rear_bumper,
+				rear_bumper_obs = :rear_bumper_obs,
+				rear_door_right = :rear_door_right,
+				rear_door_right_obs = :rear_door_right_obs,
+				rear_door_left = :rear_door_left,
+				rear_door_left_obs = :rear_door_left_obs,
+				roof = :roof,
+				roof_obs = :roof_obs,
+				convertible_top = :convertible_top,
+				convertible_top_obs = :convertible_top_obs,
+				protective_film = :protective_film,
+				protective_film_obs = :protective_film_obs,
+				airfoil = :airfoil,
+				airfoil_obs = :airfoil_obs,
+				accident_warning_sings = :accident_warning_sings,
+				accident_warning_sings_obs = :accident_warning_sings_obs,
+				observations = :observations
+			WHERE 
+				id = :id
+				");
+
+		$sql->bindValue(":id", $id);
 		$sql->bindValue(":front_hood", $front_hood);
 		$sql->bindValue(":front_hood_obs", $front_hood_obs);
 		$sql->bindValue(":rearview_mirror_right", $rearview_mirror_right);
