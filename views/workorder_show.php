@@ -96,7 +96,7 @@
 
 <div class="input-line p-2 my-2 bg-slate-200 rounded-md">
     <div class="grid grid-cols-3 gap-4 w-full">
-        <a href="<?php echo BASE_URL; ?>workorder/<?php echo ($visual_exterior_status > 0) ? 'visualexterior_edit/' .$order_info['visual_exterior_id'] : 'visualexterior_create/'.$order_info['id']?>">
+        <a href="<?php echo BASE_URL; ?>workorder/<?php echo ($visual_exterior_status > 0) ? 'visualexterior_edit/' . $order_info['visual_exterior_id'] : 'visualexterior_create/' . $order_info['id'] ?>">
             <div class="w-full bg-slate-300 rounded-md p-1.5 flex justify-between items-center">
                 <div class="font-semibold text">
                     Visual Exterior
@@ -112,7 +112,22 @@
                 </span>
             </div>
         </a>
-        <div class="w-full bg-slate-300 rounded-md p-1.5">Pneus</div>
+        <a href="<?php echo BASE_URL; ?>workorder/<?php echo ($order_info['tires_id'] > 0) ? 'tires_edit/' . $order_info['visual_exterior_id'] : 'tires_create/' . $order_info['id'] ?>">
+            <div class="w-full bg-slate-300 rounded-md p-1.5 flex justify-between items-center">
+                <div class="font-semibold text">
+                    Pneus
+                </div>
+                <span class="text-xs">
+                    <?php
+                    if ($visual_exterior_status > 0) {
+                        echo '<span class="rounded-md p-1 bg-green-600 text-white">Concluído</span>';
+                    } else {
+                        echo '<span class="rounded-md p-1 bg-amber-400 text-white">Pendente</span>';
+                    }
+                    ?>
+                </span>
+            </div>
+        </a>
         <div class="w-full bg-slate-300 rounded-md p-1.5">Freios</div>
         <div class="w-full bg-slate-300 rounded-md p-1.5">Direção</div>
         <div class="w-full bg-slate-300 rounded-md p-1.5">Combustível</div>

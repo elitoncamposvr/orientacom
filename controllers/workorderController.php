@@ -517,4 +517,16 @@ class workorderController extends controller
 		header("Location: " . BASE_URL . "workorder/show/".$workorder_id);
 	}
 
+	public function tires_create($id){
+		$u = new Users();
+        $u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['workorder_id'] = $id;
+		$this->loadTemplate('workorder_tires_create', $data);
+	}
+
 }
