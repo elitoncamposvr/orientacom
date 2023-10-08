@@ -194,7 +194,8 @@ class WorkOrder extends model
 		$sql->execute();
 	}
 
-	public function visualExteriorStatus($workorder_id){
+	public function visualExteriorStatus($workorder_id)
+	{
 		$r = 0;
 
 		$sql = $this->db->prepare("SELECT COUNT(*) as sr FROM exterior_visual WHERE workorder_id = :workorder_id");
@@ -207,7 +208,8 @@ class WorkOrder extends model
 		return $r;
 	}
 
-	public function visualExteriorInfo($id){
+	public function visualExteriorInfo($id)
+	{
 		$array = array();
 
 		$sql = $this->db->prepare("SELECT * FROM exterior_visual WHERE id = :id");
@@ -619,6 +621,159 @@ class WorkOrder extends model
 		$sql->bindValue(":airfoil_obs", $airfoil_obs);
 		$sql->bindValue(":accident_warning_sings", $accident_warning_sings);
 		$sql->bindValue(":accident_warning_sings_obs", $accident_warning_sings_obs);
+		$sql->bindValue(":observations", $observations);
+		$sql->execute();
+	}
+
+	public function tiresInfo($id)
+	{
+		$array = array();
+
+		$sql = $this->db->prepare("SELECT * FROM tires WHERE id = :id");
+		$sql->bindValue(":id", $id);
+		$sql->execute();
+
+		if ($sql->rowCount() > 0) {
+			$array = $sql->fetch();
+		}
+
+		return $array;
+	}
+
+
+	public function tiresCreate(
+		$workorder_id,
+		$front_right,
+		$front_right_situation,
+		$front_right_twi,
+		$front_right_dot,
+		$front_left,
+		$front_left_situation,
+		$front_left_twi,
+		$front_left_dot,
+		$rear_right,
+		$rear_right_situation,
+		$rear_right_twi,
+		$rear_right_dot,
+		$rear_left,
+		$rear_left_situation,
+		$rear_left_twi,
+		$rear_left_dot,
+		$observations
+	) {
+		$sql = $this->db->prepare("
+			INSERT INTO 
+				tires 
+			SET
+				status = 1, 
+				workorder_id = :workorder_id, 
+				front_right = :front_right,
+				front_right_situation = :front_right_situation,
+				front_right_twi = :front_right_twi,
+				front_right_dot = :front_right_dot,
+				front_left = :front_left,
+				front_left_situation = :front_left_situation,
+				front_left_twi = :front_left_twi,
+				front_left_dot = :front_left_dot,
+				rear_right = :rear_right,
+				rear_right_situation = :rear_right_situation,
+				rear_right_twi = :rear_right_twi,
+				rear_right_dot = :rear_right_dot,
+				rear_left = :rear_left,
+				rear_left_situation = :rear_left_situation,
+				rear_left_twi = :rear_left_twi,
+				rear_left_dot = :rear_left_dot,
+				observations = :observations
+				");
+
+		$sql->bindValue(":workorder_id", $workorder_id);
+		$sql->bindValue(":front_right", $front_right);
+		$sql->bindValue(":front_right_situation", $front_right_situation);
+		$sql->bindValue(":front_right_twi", $front_right_twi);
+		$sql->bindValue(":front_right_dot", $front_right_dot);
+		$sql->bindValue(":front_left", $front_left);
+		$sql->bindValue(":front_left_situation", $front_left_situation);
+		$sql->bindValue(":front_left_twi", $front_left_twi);
+		$sql->bindValue(":front_left_dot", $front_left_dot);
+		$sql->bindValue(":rear_right", $rear_right);
+		$sql->bindValue(":rear_right_situation", $rear_right_situation);
+		$sql->bindValue(":rear_right_twi", $rear_right_twi);
+		$sql->bindValue(":rear_right_dot", $rear_right_dot);
+		$sql->bindValue(":rear_left", $rear_left);
+		$sql->bindValue(":rear_left_situation", $rear_left_situation);
+		$sql->bindValue(":rear_left_twi", $rear_left_twi);
+		$sql->bindValue(":rear_left_dot", $rear_left_dot);
+		$sql->bindValue(":observations", $observations);
+		$sql->execute();
+
+		$last_id = $this->db->lastInsertId();
+		$id = $workorder_id;
+
+		$sql2 = $this->db->prepare("UPDATE workorder SET tires_id = '$last_id' WHERE id = '$id'");
+		$sql2->execute();
+	}
+
+	public function tiresUpdate(
+		$id,
+		$front_right,
+		$front_right_situation,
+		$front_right_twi,
+		$front_right_dot,
+		$front_left,
+		$front_left_situation,
+		$front_left_twi,
+		$front_left_dot,
+		$rear_right,
+		$rear_right_situation,
+		$rear_right_twi,
+		$rear_right_dot,
+		$rear_left,
+		$rear_left_situation,
+		$rear_left_twi,
+		$rear_left_dot,
+		$observations
+	) {
+		$sql = $this->db->prepare("
+			UPDATE
+				tires 
+			SET
+				front_right = :front_right,
+				front_right_situation = :front_right_situation,
+				front_right_twi = :front_right_twi,
+				front_right_dot = :front_right_dot,
+				front_left = :front_left,
+				front_left_situation = :front_left_situation,
+				front_left_twi = :front_left_twi,
+				front_left_dot = :front_left_dot,
+				rear_right = :rear_right,
+				rear_right_situation = :rear_right_situation,
+				rear_right_twi = :rear_right_twi,
+				rear_right_dot = :rear_right_dot,
+				rear_left = :rear_left,
+				rear_left_situation = :rear_left_situation,
+				rear_left_twi = :rear_left_twi,
+				rear_left_dot = :rear_left_dot,
+				observations = :observations
+			WHERE id = :id
+				");
+
+		$sql->bindValue(":id", $id);
+		$sql->bindValue(":front_right", $front_right);
+		$sql->bindValue(":front_right_situation", $front_right_situation);
+		$sql->bindValue(":front_right_twi", $front_right_twi);
+		$sql->bindValue(":front_right_dot", $front_right_dot);
+		$sql->bindValue(":front_left", $front_left);
+		$sql->bindValue(":front_left_situation", $front_left_situation);
+		$sql->bindValue(":front_left_twi", $front_left_twi);
+		$sql->bindValue(":front_left_dot", $front_left_dot);
+		$sql->bindValue(":rear_right", $rear_right);
+		$sql->bindValue(":rear_right_situation", $rear_right_situation);
+		$sql->bindValue(":rear_right_twi", $rear_right_twi);
+		$sql->bindValue(":rear_right_dot", $rear_right_dot);
+		$sql->bindValue(":rear_left", $rear_left);
+		$sql->bindValue(":rear_left_situation", $rear_left_situation);
+		$sql->bindValue(":rear_left_twi", $rear_left_twi);
+		$sql->bindValue(":rear_left_dot", $rear_left_dot);
 		$sql->bindValue(":observations", $observations);
 		$sql->execute();
 	}

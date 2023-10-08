@@ -7,7 +7,7 @@
     </span>
 </div>
 
-<form class="w-full py-2.5 flex-col" action="<?php echo BASE_URL; ?>workorder/visualexterior_store/<?php echo $workorder_id; ?>" method="post">
+<form class="w-full py-2.5 flex-col" action="<?php echo BASE_URL; ?>workorder/tires_store/<?php echo $workorder_id; ?>" method="post">
     <div class="input-line rounded-md bg-slate-200 p-2 flex-col mb-2">
         <div class="input-line text-sm font-semibold">
             <div class="w-4/12"></div>
@@ -52,13 +52,6 @@
     </div>
 
     <div class="input-line rounded-md bg-slate-200 p-2 flex-col mb-2">
-        <div class="input-line text-sm font-semibold">
-            <div class="w-4/12"></div>
-            <div class="w-2/12 text-center">Avaliação</div>
-            <div class="w-2/12 text-center">Situação</div>
-            <div class="w-2/12 text-center">DOT</div>
-            <div class="w-2/12 text-center">TWI</div>
-        </div>
         <div class="input-line">
             <div class="w-4/12 font-semibold">Pneu e roda dianteiro esquerdo</div>
             <div class="w-2/12 text-center">
@@ -95,13 +88,6 @@
     </div>
 
     <div class="input-line rounded-md bg-slate-200 p-2 flex-col mb-2">
-        <div class="input-line text-sm font-semibold">
-            <div class="w-4/12"></div>
-            <div class="w-2/12 text-center">Avaliação</div>
-            <div class="w-2/12 text-center">Situação</div>
-            <div class="w-2/12 text-center">DOT</div>
-            <div class="w-2/12 text-center">TWI</div>
-        </div>
         <div class="input-line">
             <div class="w-4/12 font-semibold">Pneu e roda traseiro direito</div>
             <div class="w-2/12 text-center">
@@ -138,13 +124,6 @@
     </div>
 
     <div class="input-line rounded-md bg-slate-200 p-2 flex-col mb-2">
-        <div class="input-line text-sm font-semibold">
-            <div class="w-4/12"></div>
-            <div class="w-2/12 text-center">Avaliação</div>
-            <div class="w-2/12 text-center">Situação</div>
-            <div class="w-2/12 text-center">DOT</div>
-            <div class="w-2/12 text-center">TWI</div>
-        </div>
         <div class="input-line">
             <div class="w-4/12 font-semibold">Pneu e roda traseiro esquerdo</div>
             <div class="w-2/12 text-center">

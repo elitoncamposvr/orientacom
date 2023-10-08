@@ -529,4 +529,120 @@ class workorderController extends controller
 		$this->loadTemplate('workorder_tires_create', $data);
 	}
 
+	public function tires_store($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$front_right = addslashes($_POST['front_right']);
+		$front_right_situation = addslashes($_POST['front_right_situation']);
+		$front_right_twi = addslashes($_POST['front_right_twi']);
+		$front_right_dot = addslashes($_POST['front_right_dot']);
+		$front_left = addslashes($_POST['front_left']);
+		$front_left_situation = addslashes($_POST['front_left_situation']);
+		$front_left_twi = addslashes($_POST['front_left_twi']); 
+		$front_left_dot = addslashes($_POST['front_left_dot']);
+		$rear_right = addslashes($_POST['rear_right']);
+		$rear_right_situation = addslashes($_POST['rear_right_situation']);
+		$rear_right_twi = addslashes($_POST['rear_right_twi']);
+		$rear_right_dot = addslashes($_POST['rear_right_dot']); 
+		$rear_left = addslashes($_POST['rear_left']);
+		$rear_left_situation = addslashes($_POST['rear_left_situation']); 
+		$rear_left_twi = addslashes($_POST['rear_left_twi']);
+		$rear_left_dot = addslashes($_POST['rear_left_dot']);
+		$observations = addslashes($_POST['observations']); 
+
+		$order->tiresCreate(
+			$id,
+			$front_right,
+			$front_right_situation,
+			$front_right_twi,
+			$front_right_dot,
+			$front_left,
+			$front_left_situation,
+			$front_left_twi,
+			$front_left_dot,
+			$rear_right,
+			$rear_right_situation,
+			$rear_right_twi,
+			$rear_right_dot,
+			$rear_left,
+			$rear_left_situation,
+			$rear_left_twi,
+			$rear_left_dot,
+			$observations
+		);
+		header("Location: " . BASE_URL . "workorder/show/".$id);
+	}
+
+	public function tires_edit($id){
+		$u = new Users();
+		$order = new WorkOrder();
+        $u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['tires_info'] = $order->tiresInfo($id);
+		$this->loadTemplate('workorder_tires_edit', $data);
+	}
+
+	public function tires_update($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$workorder_id = addslashes($_POST['workorder_id']);
+		$front_right = addslashes($_POST['front_right']);
+		$front_right_situation = addslashes($_POST['front_right_situation']);
+		$front_right_twi = addslashes($_POST['front_right_twi']);
+		$front_right_dot = addslashes($_POST['front_right_dot']);
+		$front_left = addslashes($_POST['front_left']);
+		$front_left_situation = addslashes($_POST['front_left_situation']);
+		$front_left_twi = addslashes($_POST['front_left_twi']); 
+		$front_left_dot = addslashes($_POST['front_left_dot']);
+		$rear_right = addslashes($_POST['rear_right']);
+		$rear_right_situation = addslashes($_POST['rear_right_situation']);
+		$rear_right_twi = addslashes($_POST['rear_right_twi']);
+		$rear_right_dot = addslashes($_POST['rear_right_dot']); 
+		$rear_left = addslashes($_POST['rear_left']);
+		$rear_left_situation = addslashes($_POST['rear_left_situation']); 
+		$rear_left_twi = addslashes($_POST['rear_left_twi']);
+		$rear_left_dot = addslashes($_POST['rear_left_dot']);
+		$observations = addslashes($_POST['observations']); 
+
+		$order->tiresUpdate(
+			$id,
+			$front_right,
+			$front_right_situation,
+			$front_right_twi,
+			$front_right_dot,
+			$front_left,
+			$front_left_situation,
+			$front_left_twi,
+			$front_left_dot,
+			$rear_right,
+			$rear_right_situation,
+			$rear_right_twi,
+			$rear_right_dot,
+			$rear_left,
+			$rear_left_situation,
+			$rear_left_twi,
+			$rear_left_dot,
+			$observations
+		);
+		header("Location: " . BASE_URL . "workorder/show/".$workorder_id);
+	}
+
 }
