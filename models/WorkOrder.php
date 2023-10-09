@@ -777,4 +777,257 @@ class WorkOrder extends model
 		$sql->bindValue(":observations", $observations);
 		$sql->execute();
 	}
+
+	public function brakesInfo($id)
+	{
+		$array = array();
+
+		$sql = $this->db->prepare("SELECT * FROM brakes WHERE id = :id");
+		$sql->bindValue(":id", $id);
+		$sql->execute();
+
+		if ($sql->rowCount() > 0) {
+			$array = $sql->fetch();
+		}
+
+		return $array;
+	}
+
+
+	public function brakesCreate(
+		$workorder_id,
+		$oil_level,
+		$oil_level_obs,
+		$hose_flexible,
+		$hose_flexible_obs,
+		$brake_pads,
+		$brake_pads_estimated,
+		$brake_pads_obs,
+		$brake_discs,
+		$brake_discs_estimated,
+		$brake_discs_obs,
+		$brake_calipers,
+		$brake_calipers_obs,
+		$cover_plates,
+		$cover_plates_obs,
+		$pedal_condition,
+		$pedal_condition_obs,
+		$observations
+	) {
+		$sql = $this->db->prepare("
+			INSERT INTO 
+				brakes 
+			SET
+				status = 1, 
+				workorder_id = :workorder_id,
+				oil_level = :oil_level,
+				oil_level_obs = :oil_level_obs,
+				hose_flexible = :hose_flexible,
+				hose_flexible_obs = :hose_flexible_obs,
+				brake_pads = :brake_pads,
+				brake_pads_estimated = :brake_pads_estimated,
+				brake_pads_obs = :brake_pads_obs,
+				brake_discs = :brake_discs,
+				brake_discs_estimated = :brake_discs_estimated,
+				brake_discs_obs = :brake_discs_obs,
+				brake_calipers = :brake_calipers,
+				brake_calipers_obs = :brake_calipers_obs,
+				cover_plates = :cover_plates,
+				cover_plates_obs = :cover_plates_obs,
+				pedal_condition = :pedal_condition,
+				pedal_condition_obs = :pedal_condition_obs,
+				observations = :observations
+				");
+
+		$sql->bindValue(":workorder_id", $workorder_id);
+		$sql->bindValue(":oil_level", $oil_level);
+		$sql->bindValue(":oil_level_obs", $oil_level_obs);
+		$sql->bindValue(":hose_flexible", $hose_flexible);
+		$sql->bindValue(":hose_flexible_obs", $hose_flexible_obs);
+		$sql->bindValue(":brake_pads", $brake_pads);
+		$sql->bindValue(":brake_pads_estimated", $brake_pads_estimated);
+		$sql->bindValue(":brake_pads_obs", $brake_pads_obs);
+		$sql->bindValue(":brake_discs", $brake_discs);
+		$sql->bindValue(":brake_discs_estimated", $brake_discs_estimated);
+		$sql->bindValue(":brake_discs_obs", $brake_discs_obs);
+		$sql->bindValue(":brake_calipers", $brake_calipers);
+		$sql->bindValue(":brake_calipers_obs", $brake_calipers_obs);
+		$sql->bindValue(":cover_plates", $cover_plates);
+		$sql->bindValue(":cover_plates_obs", $cover_plates_obs);
+		$sql->bindValue(":pedal_condition", $pedal_condition);
+		$sql->bindValue(":pedal_condition_obs", $pedal_condition_obs);
+		$sql->bindValue(":observations", $observations);
+		$sql->execute();
+
+		$last_id = $this->db->lastInsertId();
+		$id = $workorder_id;
+
+		$sql2 = $this->db->prepare("UPDATE workorder SET brakes_id = '$last_id' WHERE id = '$id'");
+		$sql2->execute();
+	}
+
+	public function brakesUpdate(
+		$id,
+		$oil_level,
+		$oil_level_obs,
+		$hose_flexible,
+		$hose_flexible_obs,
+		$brake_pads,
+		$brake_pads_estimated,
+		$brake_pads_obs,
+		$brake_discs,
+		$brake_discs_estimated,
+		$brake_discs_obs,
+		$brake_calipers,
+		$brake_calipers_obs,
+		$cover_plates,
+		$cover_plates_obs,
+		$pedal_condition,
+		$pedal_condition_obs,
+		$observations
+	) {
+		$sql = $this->db->prepare("
+		UPDATE
+			brakes 
+		SET
+			oil_level = :oil_level,
+			oil_level_obs = :oil_level_obs,
+			hose_flexible = :hose_flexible,
+			hose_flexible_obs = :hose_flexible_obs,
+			brake_pads = :brake_pads,
+			brake_pads_estimated = :brake_pads_estimated,
+			brake_pads_obs = :brake_pads_obs,
+			brake_discs = :brake_discs,
+			brake_discs_estimated = :brake_discs_estimated,
+			brake_discs_obs = :brake_discs_obs,
+			brake_calipers = :brake_calipers,
+			brake_calipers_obs = :brake_calipers_obs,
+			cover_plates = :cover_plates,
+			cover_plates_obs = :cover_plates_obs,
+			pedal_condition = :pedal_condition,
+			pedal_condition_obs = :pedal_condition_obs,
+			observations = :observations
+		WHERE
+			id = :id
+			");
+
+		$sql->bindValue(":id", $id);
+		$sql->bindValue(":oil_level", $oil_level);
+		$sql->bindValue(":oil_level_obs", $oil_level_obs);
+		$sql->bindValue(":hose_flexible", $hose_flexible);
+		$sql->bindValue(":hose_flexible_obs", $hose_flexible_obs);
+		$sql->bindValue(":brake_pads", $brake_pads);
+		$sql->bindValue(":brake_pads_estimated", $brake_pads_estimated);
+		$sql->bindValue(":brake_pads_obs", $brake_pads_obs);
+		$sql->bindValue(":brake_discs", $brake_discs);
+		$sql->bindValue(":brake_discs_estimated", $brake_discs_estimated);
+		$sql->bindValue(":brake_discs_obs", $brake_discs_obs);
+		$sql->bindValue(":brake_calipers", $brake_calipers);
+		$sql->bindValue(":brake_calipers_obs", $brake_calipers_obs);
+		$sql->bindValue(":cover_plates", $cover_plates);
+		$sql->bindValue(":cover_plates_obs", $cover_plates_obs);
+		$sql->bindValue(":pedal_condition", $pedal_condition);
+		$sql->bindValue(":pedal_condition_obs", $pedal_condition_obs);
+		$sql->bindValue(":observations", $observations);
+		$sql->execute();
+	}
+
+	public function steeringInfo($id)
+	{
+		$array = array();
+
+		$sql = $this->db->prepare("SELECT * FROM steering WHERE id = :id");
+		$sql->bindValue(":id", $id);
+		$sql->execute();
+
+		if ($sql->rowCount() > 0) {
+			$array = $sql->fetch();
+		}
+
+		return $array;
+	}
+
+	public function steeringSystemCreate(
+		$workorder_id,
+		$steering_system,
+		$steering_type,
+		$steering_system_obs,
+		$oil_level,
+		$oil_level_obs,
+		$hoses_fittings,
+		$hoses_fittings_obs,
+		$observations
+	) {
+		$sql = $this->db->prepare("
+			INSERT INTO 
+				steering 
+			SET
+				status = 1, 
+				workorder_id = :workorder_id,
+				steering_system = :steering_system,
+				steering_type = :steering_type,
+				steering_system_obs = :steering_system_obs,
+				oil_level = :oil_level,
+				oil_level_obs = :oil_level_obs,
+				hoses_fittings = :hoses_fittings,
+				hoses_fittings_obs = :hoses_fittings_obs,
+				observations = :observations
+				");
+
+		$sql->bindValue(":workorder_id", $workorder_id);
+		$sql->bindValue(":steering_system", $steering_system);
+		$sql->bindValue(":steering_type", $steering_type);
+		$sql->bindValue(":steering_system_obs", $steering_system_obs);
+		$sql->bindValue(":oil_level", $oil_level);
+		$sql->bindValue(":oil_level_obs", $oil_level_obs);
+		$sql->bindValue(":hoses_fittings", $hoses_fittings);
+		$sql->bindValue(":hoses_fittings_obs", $hoses_fittings_obs);
+		$sql->bindValue(":observations", $observations);
+		$sql->execute();
+
+		$last_id = $this->db->lastInsertId();
+		$id = $workorder_id;
+
+		$sql2 = $this->db->prepare("UPDATE workorder SET steering_system_id = '$last_id' WHERE id = '$id'");
+		$sql2->execute();
+	}
+
+	public function steeringSystemUpdate(
+		$id,
+		$steering_system,
+		$steering_type,
+		$steering_system_obs,
+		$oil_level,
+		$oil_level_obs,
+		$hoses_fittings,
+		$hoses_fittings_obs,
+		$observations
+	) {
+		$sql = $this->db->prepare("
+			UPDATE
+				steering 
+			SET
+				steering_system = :steering_system,
+				steering_type = :steering_type,
+				steering_system_obs = :steering_system_obs,
+				oil_level = :oil_level,
+				oil_level_obs = :oil_level_obs,
+				hoses_fittings = :hoses_fittings,
+				hoses_fittings_obs = :hoses_fittings_obs,
+				observations = :observations
+			WHERE
+				id = :id
+				");
+
+		$sql->bindValue(":id", $id);
+		$sql->bindValue(":steering_system", $steering_system);
+		$sql->bindValue(":steering_type", $steering_type);
+		$sql->bindValue(":steering_system_obs", $steering_system_obs);
+		$sql->bindValue(":oil_level", $oil_level);
+		$sql->bindValue(":oil_level_obs", $oil_level_obs);
+		$sql->bindValue(":hoses_fittings", $hoses_fittings);
+		$sql->bindValue(":hoses_fittings_obs", $hoses_fittings_obs);
+		$sql->bindValue(":observations", $observations);
+		$sql->execute();
+	}
 }

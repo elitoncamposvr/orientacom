@@ -128,8 +128,38 @@
                 </span>
             </div>
         </a>
-        <div class="w-full bg-slate-300 rounded-md p-1.5">Freios</div>
-        <div class="w-full bg-slate-300 rounded-md p-1.5">Direção</div>
+        <a href="<?php echo BASE_URL; ?>workorder/<?php echo ($order_info['brakes_id'] > 0) ? 'brakes_edit/' . $order_info['brakes_id'] : 'brakes_create/' . $order_info['id'] ?>">
+            <div class="w-full bg-slate-300 rounded-md p-1.5 flex justify-between items-center">
+                <div class="font-semibold text">
+                    Freios
+                </div>
+                <span class="text-xs">
+                    <?php
+                    if ($order_info['brakes_id'] > 0) {
+                        echo '<span class="rounded-md p-1 bg-green-600 text-white">Concluído</span>';
+                    } else {
+                        echo '<span class="rounded-md p-1 bg-amber-400 text-white">Pendente</span>';
+                    }
+                    ?>
+                </span>
+            </div>
+        </a>
+        <a href="<?php echo BASE_URL; ?>workorder/<?php echo ($order_info['steering_system_id'] > 0) ? 'steeringsystem_edit/' . $order_info['steering_system_id'] : 'steeringsystem_create/' . $order_info['id'] ?>">
+            <div class="w-full bg-slate-300 rounded-md p-1.5 flex justify-between items-center">
+                <div class="font-semibold text">
+                    Direção
+                </div>
+                <span class="text-xs">
+                    <?php
+                    if ($order_info['steering_system_id'] > 0) {
+                        echo '<span class="rounded-md p-1 bg-green-600 text-white">Concluído</span>';
+                    } else {
+                        echo '<span class="rounded-md p-1 bg-amber-400 text-white">Pendente</span>';
+                    }
+                    ?>
+                </span>
+            </div>
+        </a>
         <div class="w-full bg-slate-300 rounded-md p-1.5">Combustível</div>
         <div class="w-full bg-slate-300 rounded-md p-1.5">Motor</div>
         <div class="w-full bg-slate-300 rounded-md p-1.5">Suspensão</div>

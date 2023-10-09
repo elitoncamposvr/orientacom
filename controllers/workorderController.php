@@ -645,4 +645,223 @@ class workorderController extends controller
 		header("Location: " . BASE_URL . "workorder/show/".$workorder_id);
 	}
 
+	public function brakes_create($id){
+		$u = new Users();
+        $u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['workorder_id'] = $id;
+		$this->loadTemplate('workorder_brakes_create', $data);
+	}
+
+	public function brakes_store($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$oil_level = addslashes($_POST['oil_level']);
+		$oil_level_obs = addslashes($_POST['oil_level_obs']);
+		$hose_flexible = addslashes($_POST['hose_flexible']);
+		$hose_flexible_obs = addslashes($_POST['hose_flexible_obs']);
+		$brake_pads = addslashes($_POST['brake_pads']);
+		$brake_pads_estimated = addslashes($_POST['brake_pads_estimated']); 
+		$brake_pads_obs = addslashes($_POST['brake_pads_obs']);
+		$brake_discs = addslashes($_POST['brake_discs']);
+		$brake_discs_estimated = addslashes($_POST['brake_discs_estimated']);
+		$brake_discs_obs = addslashes($_POST['brake_discs_obs']); 
+		$brake_calipers = addslashes($_POST['brake_calipers']);
+		$brake_calipers_obs = addslashes($_POST['brake_calipers_obs']);
+		$cover_plates = addslashes($_POST['cover_plates']);
+		$cover_plates_obs = addslashes($_POST['cover_plates_obs']);
+		$pedal_condition = addslashes($_POST['pedal_condition']);
+		$pedal_condition_obs = addslashes($_POST['pedal_condition_obs']);
+		$observations = addslashes($_POST['observations']);
+
+		$order->brakesCreate(
+			$id,
+			$oil_level,
+			$oil_level_obs,
+			$hose_flexible,
+			$hose_flexible_obs,
+			$brake_pads,
+			$brake_pads_estimated,
+			$brake_pads_obs,
+			$brake_discs,
+			$brake_discs_estimated,
+			$brake_discs_obs,
+			$brake_calipers,
+			$brake_calipers_obs,
+			$cover_plates,
+			$cover_plates_obs,
+			$pedal_condition,
+			$pedal_condition_obs,
+			$observations
+		);
+		header("Location: " . BASE_URL . "workorder/show/".$id);
+	}
+
+	public function brakes_edit($id){
+		$u = new Users();
+		$order = new WorkOrder();
+        $u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['brakes_info'] = $order->brakesInfo($id);
+		$this->loadTemplate('workorder_brakes_edit', $data);
+	}
+
+	public function brakes_update($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$workorder_id = addslashes($_POST['workorder_id']);
+		$oil_level = addslashes($_POST['oil_level']);
+		$oil_level_obs = addslashes($_POST['oil_level_obs']);
+		$hose_flexible = addslashes($_POST['hose_flexible']);
+		$hose_flexible_obs = addslashes($_POST['hose_flexible_obs']);
+		$brake_pads = addslashes($_POST['brake_pads']);
+		$brake_pads_estimated = addslashes($_POST['brake_pads_estimated']); 
+		$brake_pads_obs = addslashes($_POST['brake_pads_obs']);
+		$brake_discs = addslashes($_POST['brake_discs']);
+		$brake_discs_estimated = addslashes($_POST['brake_discs_estimated']);
+		$brake_discs_obs = addslashes($_POST['brake_discs_obs']); 
+		$brake_calipers = addslashes($_POST['brake_calipers']);
+		$brake_calipers_obs = addslashes($_POST['brake_calipers_obs']);
+		$cover_plates = addslashes($_POST['cover_plates']);
+		$cover_plates_obs = addslashes($_POST['cover_plates_obs']);
+		$pedal_condition = addslashes($_POST['pedal_condition']);
+		$pedal_condition_obs = addslashes($_POST['pedal_condition_obs']);
+		$observations = addslashes($_POST['observations']);
+
+		$order->brakesUpdate(
+			$id,
+			$oil_level,
+			$oil_level_obs,
+			$hose_flexible,
+			$hose_flexible_obs,
+			$brake_pads,
+			$brake_pads_estimated,
+			$brake_pads_obs,
+			$brake_discs,
+			$brake_discs_estimated,
+			$brake_discs_obs,
+			$brake_calipers,
+			$brake_calipers_obs,
+			$cover_plates,
+			$cover_plates_obs,
+			$pedal_condition,
+			$pedal_condition_obs,
+			$observations
+		);
+		header("Location: " . BASE_URL . "workorder/show/".$workorder_id);
+	}
+
+	public function steeringsystem_create($id){
+		$u = new Users();
+        $u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['workorder_id'] = $id;
+		$this->loadTemplate('workorder_steering_system_create', $data);
+	}
+
+	public function steeringsystem_store($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$steering_system = addslashes($_POST['steering_system']);
+		$steering_type = addslashes($_POST['steering_type']);
+		$steering_system_obs = addslashes($_POST['steering_system_obs']);
+		$oil_level = addslashes($_POST['oil_level']);
+		$oil_level_obs = addslashes($_POST['oil_level_obs']);
+		$hoses_fittings = addslashes($_POST['hoses_fittings']);
+		$hoses_fittings_obs = addslashes($_POST['hoses_fittings_obs']);
+		$observations = addslashes($_POST['observations']);
+
+		$order->steeringSystemCreate(
+			$id,
+			$steering_system,
+			$steering_type,
+			$steering_system_obs,
+			$oil_level,
+			$oil_level_obs,
+			$hoses_fittings,
+			$hoses_fittings_obs,
+			$observations
+		);
+		header("Location: " . BASE_URL . "workorder/show/".$id);
+	}
+
+	public function steeringsystem_edit($id){
+		$u = new Users();
+		$order = new WorkOrder();
+        $u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['steering_info'] = $order->steeringInfo($id);
+		$this->loadTemplate('workorder_steering_system_edit', $data);
+	}
+
+	public function steeringsystem_update($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$workorder_id = addslashes($_POST['workorder_id']);
+		$steering_system = addslashes($_POST['steering_system']);
+		$steering_type = addslashes($_POST['steering_type']);
+		$steering_system_obs = addslashes($_POST['steering_system_obs']);
+		$oil_level = addslashes($_POST['oil_level']);
+		$oil_level_obs = addslashes($_POST['oil_level_obs']);
+		$hoses_fittings = addslashes($_POST['hoses_fittings']);
+		$hoses_fittings_obs = addslashes($_POST['hoses_fittings_obs']);
+		$observations = addslashes($_POST['observations']);
+
+		$order->steeringSystemUpdate(
+			$id,
+			$steering_system,
+			$steering_type,
+			$steering_system_obs,
+			$oil_level,
+			$oil_level_obs,
+			$hoses_fittings,
+			$hoses_fittings_obs,
+			$observations
+		);
+		header("Location: " . BASE_URL . "workorder/show/".$workorder_id);
+	}
 }
