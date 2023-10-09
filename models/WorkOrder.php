@@ -1030,4 +1030,85 @@ class WorkOrder extends model
 		$sql->bindValue(":observations", $observations);
 		$sql->execute();
 	}
+
+	public function fuelInfo($id)
+	{
+		$array = array();
+
+		$sql = $this->db->prepare("SELECT * FROM fuel_system WHERE id = :id");
+		$sql->bindValue(":id", $id);
+		$sql->execute();
+
+		if ($sql->rowCount() > 0) {
+			$array = $sql->fetch();
+		}
+
+		return $array;
+	}
+
+	public function fuelSystemCreate(
+		$workorder_id,
+		$pumps_connections,
+		$pumps_connections_obs,
+		$tank_hoses,
+		$tank_hoses_obs,
+		$observations
+	) {
+		$sql = $this->db->prepare("
+			INSERT INTO 
+				fuel_system 
+			SET
+				status = 1, 
+				workorder_id = :workorder_id,
+				pumps_connections = :pumps_connections,
+				pumps_connections_obs = :pumps_connections_obs,
+				tank_hoses = :tank_hoses,
+				tank_hoses_obs = :tank_hoses_obs,
+				observations = :observations
+				");
+
+		$sql->bindValue(":workorder_id", $workorder_id);
+		$sql->bindValue(":pumps_connections", $pumps_connections);
+		$sql->bindValue(":pumps_connections_obs", $pumps_connections_obs);
+		$sql->bindValue(":tank_hoses", $tank_hoses);
+		$sql->bindValue(":tank_hoses_obs", $tank_hoses_obs);
+		$sql->bindValue(":observations", $observations);
+		$sql->execute();
+
+		$last_id = $this->db->lastInsertId();
+		$id = $workorder_id;
+
+		$sql2 = $this->db->prepare("UPDATE workorder SET fuel_system_id = '$last_id' WHERE id = '$id'");
+		$sql2->execute();
+	}
+
+	public function fuelSystemUpdate(
+		$id,
+		$pumps_connections,
+		$pumps_connections_obs,
+		$tank_hoses,
+		$tank_hoses_obs,
+		$observations
+	) {
+		$sql = $this->db->prepare("
+			UPDATE
+				fuel_system 
+			SET
+				pumps_connections = :pumps_connections,
+				pumps_connections_obs = :pumps_connections_obs,
+				tank_hoses = :tank_hoses,
+				tank_hoses_obs = :tank_hoses_obs,
+				observations = :observations
+			WHERE 
+				id = :id
+				");
+
+		$sql->bindValue(":id", $id);
+		$sql->bindValue(":pumps_connections", $pumps_connections);
+		$sql->bindValue(":pumps_connections_obs", $pumps_connections_obs);
+		$sql->bindValue(":tank_hoses", $tank_hoses);
+		$sql->bindValue(":tank_hoses_obs", $tank_hoses_obs);
+		$sql->bindValue(":observations", $observations);
+		$sql->execute();
+	}
 }

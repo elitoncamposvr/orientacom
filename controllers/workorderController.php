@@ -864,4 +864,84 @@ class workorderController extends controller
 		);
 		header("Location: " . BASE_URL . "workorder/show/".$workorder_id);
 	}
+
+	public function fuelsystem_create($id){
+		$u = new Users();
+        $u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['workorder_id'] = $id;
+		$this->loadTemplate('workorder_fuel_system_create', $data);
+	}
+
+	public function fuelsystem_store($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$pumps_connections = addslashes($_POST['pumps_connections']);
+		$pumps_connections_obs = addslashes($_POST['pumps_connections_obs']);
+		$tank_hoses = addslashes($_POST['tank_hoses']);
+		$tank_hoses_obs = addslashes($_POST['tank_hoses_obs']);
+		$observations = addslashes($_POST['observations']);
+
+		$order->fuelSystemCreate(
+			$id,
+			$pumps_connections,
+			$pumps_connections_obs,
+			$tank_hoses,
+			$tank_hoses_obs,
+			$observations
+		);
+		header("Location: " . BASE_URL . "workorder/show/".$id);
+	}
+
+	public function fuelsystem_edit($id){
+		$u = new Users();
+		$order = new WorkOrder();
+        $u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['fuel_info'] = $order->fuelInfo($id);
+		$this->loadTemplate('workorder_fuel_system_edit', $data);
+	}
+
+	public function fuelsystem_update($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$workorder_id = addslashes($_POST['workorder_id']);
+		$pumps_connections = addslashes($_POST['pumps_connections']);
+		$pumps_connections_obs = addslashes($_POST['pumps_connections_obs']);
+		$tank_hoses = addslashes($_POST['tank_hoses']);
+		$tank_hoses_obs = addslashes($_POST['tank_hoses_obs']);
+		$observations = addslashes($_POST['observations']);
+
+		$order->fuelSystemUpdate(
+			$id,
+			$pumps_connections,
+			$pumps_connections_obs,
+			$tank_hoses,
+			$tank_hoses_obs,
+			$observations
+		);
+		header("Location: " . BASE_URL . "workorder/show/".$workorder_id);
+	}
 }
