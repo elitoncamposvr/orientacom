@@ -1386,4 +1386,117 @@ class workorderController extends controller
 		);
 		header("Location: " . BASE_URL . "workorder/show/" . $workorder_id);
 	}
+
+	public function lightglass_create($id)
+	{
+		$u = new Users();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['workorder_id'] = $id;
+		$this->loadTemplate('workorder_light_glass_create', $data);
+	}
+
+	public function lightglass_store($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$low_beam_drive = addslashes($_POST['low_beam_drive']);
+		$low_beam_drive_obs = addslashes($_POST['low_beam_drive_obs']);
+		$high_beam_drive = addslashes($_POST['high_beam_drive']);
+		$high_beam_drive_obs = addslashes($_POST['high_beam_drive_obs']);
+		$flashlights = addslashes($_POST['flashlights']);
+		$flashlights_obs = addslashes($_POST['flashlights_obs']);
+		$longrange_headlamp = addslashes($_POST['longrange_headlamp']);
+		$longrange_headlamp_obs = addslashes($_POST['longrange_headlamp_obs']);
+		$brake_light = addslashes($_POST['brake_light']);
+		$brake_light_obs = addslashes($_POST['brake_light_obs']);
+		$reverse_light = addslashes($_POST['reverse_light']);
+		$reverse_light_obs = addslashes($_POST['reverse_light_obs']);
+		$sensors_cameras = addslashes($_POST['sensors_cameras']);
+		$sensors_cameras_obs = addslashes($_POST['sensors_cameras_obs']); 
+		$dashboard_lights = addslashes($_POST['dashboard_lights']);
+		$dashboard_lights_obs = addslashes($_POST['dashboard_lights_obs']);
+		$interior_lighting = addslashes($_POST['interior_lighting']);
+		$interior_lighting_obs = addslashes($_POST['interior_lighting_obs']);
+		$internal_light = addslashes($_POST['internal_light']);
+		$internal_light_obs = addslashes($_POST['internal_light_obs']);
+		$arrow_light_right = addslashes($_POST['arrow_light_right']);
+		$arrow_light_right_obs = addslashes($_POST['arrow_light_right_obs']);
+		$arrow_light_left = addslashes($_POST['arrow_light_left']);
+		$arrow_light_left_obs = addslashes($_POST['arrow_light_left_obs']);
+		$warning_flashers = addslashes($_POST['warning_flashers']);
+		$warning_flashers_obs = addslashes($_POST['warning_flashers_obs']);
+		$headlight_washing = addslashes($_POST['headlight_washing']);
+		$headlight_washing_obs = addslashes($_POST['headlight_washing_obs']);
+		$front_windshield_wiper = addslashes($_POST['front_windshield_wiper']);
+		$front_windshield_wiper_obs = addslashes($_POST['front_windshield_wiper_obs']);
+		$rear_windshield_wiper = addslashes($_POST['rear_windshield_wiper']);
+		$rear_windshield_wiper_obs = addslashes($_POST['rear_windshield_wiper_obs']);
+		$sunshade = addslashes($_POST['sunshade']);
+		$sunshade_obs = addslashes($_POST['sunshade_obs']);
+		$glass_heating = addslashes($_POST['glass_heating']);
+		$glass_heating_obs = addslashes($_POST['glass_heating']);
+		$rearview_adjustments = addslashes($_POST['rearview_adjustments']);
+		$rearview_adjustments_obs = addslashes($_POST['rearview_adjustments_obs']);
+		$electric_windows = addslashes($_POST['electric_windows']);
+		$electric_windows_obs = addslashes($_POST['electric_windows_obs']);
+		$observations = addslashes($_POST['observations']);
+
+
+		$order->lightglassCreate(
+			$id,
+			$low_beam_drive,
+			$low_beam_drive_obs,
+			$high_beam_drive,
+			$high_beam_drive_obs,
+			$flashlights,
+			$flashlights_obs,
+			$longrange_headlamp,
+			$longrange_headlamp_obs,
+			$brake_light,
+			$brake_light_obs,
+			$reverse_light,
+			$reverse_light_obs,
+			$sensors_cameras,
+			$sensors_cameras_obs,
+			$dashboard_lights,
+			$dashboard_lights_obs,
+			$interior_lighting,
+			$interior_lighting_obs,
+			$internal_light,
+			$internal_light_obs,
+			$arrow_light_right,
+			$arrow_light_right_obs,
+			$arrow_light_left,
+			$arrow_light_left_obs,
+			$warning_flashers,
+			$warning_flashers_obs,
+			$headlight_washing,
+			$headlight_washing_obs,
+			$front_windshield_wiper,
+			$front_windshield_wiper_obs,
+			$rear_windshield_wiper,
+			$rear_windshield_wiper_obs,
+			$sunshade,
+			$sunshade_obs,
+			$glass_heating,
+			$glass_heating_obs,
+			$rearview_adjustments,
+			$rearview_adjustments_obs,
+			$electric_windows,
+			$electric_windows_obs,
+			$observations
+		);
+		header("Location: " . BASE_URL . "workorder/show/" . $id);
+	}
 }

@@ -224,7 +224,22 @@
                 </span>
             </div>
         </a>
-        <div class="w-full bg-slate-300 rounded-md p-1.5">Luzes e Vidros</div>
+        <a href="<?php echo BASE_URL; ?>workorder/<?php echo ($order_info['light_glass_id'] > 0) ? 'lightglass_edit/' . $order_info['light_glass_id'] : 'lightglass_create/' . $order_info['id'] ?>">
+            <div class="w-full bg-slate-300 rounded-md p-1.5 flex justify-between items-center">
+                <div class="font-semibold text">
+                    Luzes e Vidros
+                </div>
+                <span class="text-xs">
+                    <?php
+                    if ($order_info['light_glass_id'] > 0) {
+                        echo '<span class="rounded-md p-1 bg-green-600 text-white">Concluído</span>';
+                    } else {
+                        echo '<span class="rounded-md p-1 bg-amber-400 text-white">Pendente</span>';
+                    }
+                    ?>
+                </span>
+            </div>
+        </a>
         <div class="w-full bg-slate-300 rounded-md p-1.5">Visual Interior</div>
 
     </div>
