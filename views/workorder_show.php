@@ -176,7 +176,22 @@
                 </span>
             </div>
         </a>
-        <div class="w-full bg-slate-300 rounded-md p-1.5">Motor</div>
+        <a href="<?php echo BASE_URL; ?>workorder/<?php echo ($order_info['engine_id'] > 0) ? 'engine_edit/' . $order_info['engine_id'] : 'engine_create/' . $order_info['id'] ?>">
+            <div class="w-full bg-slate-300 rounded-md p-1.5 flex justify-between items-center">
+                <div class="font-semibold text">
+                    Motor
+                </div>
+                <span class="text-xs">
+                    <?php
+                    if ($order_info['engine_id'] > 0) {
+                        echo '<span class="rounded-md p-1 bg-green-600 text-white">Concluído</span>';
+                    } else {
+                        echo '<span class="rounded-md p-1 bg-amber-400 text-white">Pendente</span>';
+                    }
+                    ?>
+                </span>
+            </div>
+        </a>
         <div class="w-full bg-slate-300 rounded-md p-1.5">Suspensão</div>
         <div class="w-full bg-slate-300 rounded-md p-1.5">Mecânica Geral</div>
         <div class="w-full bg-slate-300 rounded-md p-1.5">Luzes e Vidros</div>

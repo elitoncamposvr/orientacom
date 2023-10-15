@@ -89,12 +89,12 @@ class workorderController extends controller
 			$license_plate,
 			$chassis,
 			$transmission,
-            $fuel,
-            $power,
+			$fuel,
+			$power,
 			$km,
 			$responsible_consultant,
-            $responsible_mechanic,
-            $aditional_info
+			$responsible_mechanic,
+			$aditional_info
 		);
 		header("Location: " . BASE_URL . "workorder");
 	}
@@ -150,12 +150,12 @@ class workorderController extends controller
 			$license_plate,
 			$chassis,
 			$transmission,
-            $fuel,
-            $power,
+			$fuel,
+			$power,
 			$km,
 			$responsible_consultant,
-            $responsible_mechanic,
-            $aditional_info
+			$responsible_mechanic,
+			$aditional_info
 		);
 		header("Location: " . BASE_URL . "workorder");
 	}
@@ -207,9 +207,10 @@ class workorderController extends controller
 		header("Location: " . BASE_URL . "workorder");
 	}
 
-	public function visualexterior_create($id){
+	public function visualexterior_create($id)
+	{
 		$u = new Users();
-        $u->setLoggedUser();
+		$u->setLoggedUser();
 
 		if (!$u->hasPermission('workorder')) {
 			header("Location: " . BASE_URL . "home/unauthorized");
@@ -254,21 +255,21 @@ class workorderController extends controller
 		$front_door_left = addslashes($_POST['front_door_left']);
 		$front_door_left_obs = addslashes($_POST['front_door_left_obs']);
 		$rear_window_right = addslashes($_POST['rear_window_right']);
-		$rear_window_right_obs = addslashes($_POST['rear_window_right_obs']); 
+		$rear_window_right_obs = addslashes($_POST['rear_window_right_obs']);
 		$rear_window_left = addslashes($_POST['rear_window_left']);
-		$rear_window_left_obs = addslashes($_POST['rear_window_left_obs']); 
+		$rear_window_left_obs = addslashes($_POST['rear_window_left_obs']);
 		$rear_fenders_right = addslashes($_POST['rear_fenders_right']);
-		$rear_fenders_right_obs = addslashes($_POST['rear_fenders_right_obs']); 
+		$rear_fenders_right_obs = addslashes($_POST['rear_fenders_right_obs']);
 		$rear_fenders_left = addslashes($_POST['rear_fenders_left']);
-		$rear_fenders_left_obs = addslashes($_POST['rear_fenders_left_obs']); 
+		$rear_fenders_left_obs = addslashes($_POST['rear_fenders_left_obs']);
 		$rear_trunk_lid = addslashes($_POST['rear_trunk_lid']);
 		$rear_trunk_lid_obs = addslashes($_POST['rear_trunk_lid_obs']);
-		$upper_trunk_lid = addslashes($_POST['upper_trunk_lid']); 
+		$upper_trunk_lid = addslashes($_POST['upper_trunk_lid']);
 		$upper_trunk_lid_obs = addslashes($_POST['upper_trunk_lid_obs']);
 		$taillight_right = addslashes($_POST['taillight_right']);
 		$taillight_right_obs = addslashes($_POST['taillight_right_obs']);
-		$taillight_left = addslashes($_POST['taillight_left']); 
-		$taillight_left_obs = addslashes($_POST['taillight_left_obs']); 
+		$taillight_left = addslashes($_POST['taillight_left']);
+		$taillight_left_obs = addslashes($_POST['taillight_left_obs']);
 		$rear_window = addslashes($_POST['rear_window']);
 		$rear_window_obs = addslashes($_POST['rear_window_obs']);
 		$front_windshield = addslashes($_POST['front_windshield']);
@@ -284,12 +285,12 @@ class workorderController extends controller
 		$convertible_top = addslashes($_POST['convertible_top']);
 		$convertible_top_obs = addslashes($_POST['convertible_top_obs']);
 		$protective_film = addslashes($_POST['protective_film']);
-		$protective_film_obs = addslashes($_POST['protective_film_obs']); 
+		$protective_film_obs = addslashes($_POST['protective_film_obs']);
 		$airfoil = addslashes($_POST['airfoil']);
 		$airfoil_obs = addslashes($_POST['airfoil_obs']);
 		$accident_warning_sings = addslashes($_POST['accident_warning_sings']);
-		$accident_warning_sings_obs = addslashes($_POST['accident_warning_sings_obs']); 
-		$observations = addslashes($_POST['observations']); 
+		$accident_warning_sings_obs = addslashes($_POST['accident_warning_sings_obs']);
+		$observations = addslashes($_POST['observations']);
 
 
 		$order->visualExteriorCreate(
@@ -358,13 +359,14 @@ class workorderController extends controller
 
 
 		);
-		header("Location: " . BASE_URL . "workorder/show/".$id);
+		header("Location: " . BASE_URL . "workorder/show/" . $id);
 	}
 
-	public function visualexterior_edit($id){
+	public function visualexterior_edit($id)
+	{
 		$u = new Users();
 		$order = new WorkOrder();
-        $u->setLoggedUser();
+		$u->setLoggedUser();
 
 		if (!$u->hasPermission('workorder')) {
 			header("Location: " . BASE_URL . "home/unauthorized");
@@ -410,21 +412,21 @@ class workorderController extends controller
 		$front_door_left = addslashes($_POST['front_door_left']);
 		$front_door_left_obs = addslashes($_POST['front_door_left_obs']);
 		$rear_window_right = addslashes($_POST['rear_window_right']);
-		$rear_window_right_obs = addslashes($_POST['rear_window_right_obs']); 
+		$rear_window_right_obs = addslashes($_POST['rear_window_right_obs']);
 		$rear_window_left = addslashes($_POST['rear_window_left']);
-		$rear_window_left_obs = addslashes($_POST['rear_window_left_obs']); 
+		$rear_window_left_obs = addslashes($_POST['rear_window_left_obs']);
 		$rear_fenders_right = addslashes($_POST['rear_fenders_right']);
-		$rear_fenders_right_obs = addslashes($_POST['rear_fenders_right_obs']); 
+		$rear_fenders_right_obs = addslashes($_POST['rear_fenders_right_obs']);
 		$rear_fenders_left = addslashes($_POST['rear_fenders_left']);
-		$rear_fenders_left_obs = addslashes($_POST['rear_fenders_left_obs']); 
+		$rear_fenders_left_obs = addslashes($_POST['rear_fenders_left_obs']);
 		$rear_trunk_lid = addslashes($_POST['rear_trunk_lid']);
 		$rear_trunk_lid_obs = addslashes($_POST['rear_trunk_lid_obs']);
-		$upper_trunk_lid = addslashes($_POST['upper_trunk_lid']); 
+		$upper_trunk_lid = addslashes($_POST['upper_trunk_lid']);
 		$upper_trunk_lid_obs = addslashes($_POST['upper_trunk_lid_obs']);
 		$taillight_right = addslashes($_POST['taillight_right']);
 		$taillight_right_obs = addslashes($_POST['taillight_right_obs']);
-		$taillight_left = addslashes($_POST['taillight_left']); 
-		$taillight_left_obs = addslashes($_POST['taillight_left_obs']); 
+		$taillight_left = addslashes($_POST['taillight_left']);
+		$taillight_left_obs = addslashes($_POST['taillight_left_obs']);
 		$rear_window = addslashes($_POST['rear_window']);
 		$rear_window_obs = addslashes($_POST['rear_window_obs']);
 		$front_windshield = addslashes($_POST['front_windshield']);
@@ -440,12 +442,12 @@ class workorderController extends controller
 		$convertible_top = addslashes($_POST['convertible_top']);
 		$convertible_top_obs = addslashes($_POST['convertible_top_obs']);
 		$protective_film = addslashes($_POST['protective_film']);
-		$protective_film_obs = addslashes($_POST['protective_film_obs']); 
+		$protective_film_obs = addslashes($_POST['protective_film_obs']);
 		$airfoil = addslashes($_POST['airfoil']);
 		$airfoil_obs = addslashes($_POST['airfoil_obs']);
 		$accident_warning_sings = addslashes($_POST['accident_warning_sings']);
-		$accident_warning_sings_obs = addslashes($_POST['accident_warning_sings_obs']); 
-		$observations = addslashes($_POST['observations']); 
+		$accident_warning_sings_obs = addslashes($_POST['accident_warning_sings_obs']);
+		$observations = addslashes($_POST['observations']);
 
 
 		$order->visualExteriorUpdate(
@@ -514,12 +516,13 @@ class workorderController extends controller
 
 
 		);
-		header("Location: " . BASE_URL . "workorder/show/".$workorder_id);
+		header("Location: " . BASE_URL . "workorder/show/" . $workorder_id);
 	}
 
-	public function tires_create($id){
+	public function tires_create($id)
+	{
 		$u = new Users();
-        $u->setLoggedUser();
+		$u->setLoggedUser();
 
 		if (!$u->hasPermission('workorder')) {
 			header("Location: " . BASE_URL . "home/unauthorized");
@@ -545,17 +548,17 @@ class workorderController extends controller
 		$front_right_dot = addslashes($_POST['front_right_dot']);
 		$front_left = addslashes($_POST['front_left']);
 		$front_left_situation = addslashes($_POST['front_left_situation']);
-		$front_left_twi = addslashes($_POST['front_left_twi']); 
+		$front_left_twi = addslashes($_POST['front_left_twi']);
 		$front_left_dot = addslashes($_POST['front_left_dot']);
 		$rear_right = addslashes($_POST['rear_right']);
 		$rear_right_situation = addslashes($_POST['rear_right_situation']);
 		$rear_right_twi = addslashes($_POST['rear_right_twi']);
-		$rear_right_dot = addslashes($_POST['rear_right_dot']); 
+		$rear_right_dot = addslashes($_POST['rear_right_dot']);
 		$rear_left = addslashes($_POST['rear_left']);
-		$rear_left_situation = addslashes($_POST['rear_left_situation']); 
+		$rear_left_situation = addslashes($_POST['rear_left_situation']);
 		$rear_left_twi = addslashes($_POST['rear_left_twi']);
 		$rear_left_dot = addslashes($_POST['rear_left_dot']);
-		$observations = addslashes($_POST['observations']); 
+		$observations = addslashes($_POST['observations']);
 
 		$order->tiresCreate(
 			$id,
@@ -577,13 +580,14 @@ class workorderController extends controller
 			$rear_left_dot,
 			$observations
 		);
-		header("Location: " . BASE_URL . "workorder/show/".$id);
+		header("Location: " . BASE_URL . "workorder/show/" . $id);
 	}
 
-	public function tires_edit($id){
+	public function tires_edit($id)
+	{
 		$u = new Users();
 		$order = new WorkOrder();
-        $u->setLoggedUser();
+		$u->setLoggedUser();
 
 		if (!$u->hasPermission('workorder')) {
 			header("Location: " . BASE_URL . "home/unauthorized");
@@ -610,17 +614,17 @@ class workorderController extends controller
 		$front_right_dot = addslashes($_POST['front_right_dot']);
 		$front_left = addslashes($_POST['front_left']);
 		$front_left_situation = addslashes($_POST['front_left_situation']);
-		$front_left_twi = addslashes($_POST['front_left_twi']); 
+		$front_left_twi = addslashes($_POST['front_left_twi']);
 		$front_left_dot = addslashes($_POST['front_left_dot']);
 		$rear_right = addslashes($_POST['rear_right']);
 		$rear_right_situation = addslashes($_POST['rear_right_situation']);
 		$rear_right_twi = addslashes($_POST['rear_right_twi']);
-		$rear_right_dot = addslashes($_POST['rear_right_dot']); 
+		$rear_right_dot = addslashes($_POST['rear_right_dot']);
 		$rear_left = addslashes($_POST['rear_left']);
-		$rear_left_situation = addslashes($_POST['rear_left_situation']); 
+		$rear_left_situation = addslashes($_POST['rear_left_situation']);
 		$rear_left_twi = addslashes($_POST['rear_left_twi']);
 		$rear_left_dot = addslashes($_POST['rear_left_dot']);
-		$observations = addslashes($_POST['observations']); 
+		$observations = addslashes($_POST['observations']);
 
 		$order->tiresUpdate(
 			$id,
@@ -642,12 +646,13 @@ class workorderController extends controller
 			$rear_left_dot,
 			$observations
 		);
-		header("Location: " . BASE_URL . "workorder/show/".$workorder_id);
+		header("Location: " . BASE_URL . "workorder/show/" . $workorder_id);
 	}
 
-	public function brakes_create($id){
+	public function brakes_create($id)
+	{
 		$u = new Users();
-        $u->setLoggedUser();
+		$u->setLoggedUser();
 
 		if (!$u->hasPermission('workorder')) {
 			header("Location: " . BASE_URL . "home/unauthorized");
@@ -672,11 +677,11 @@ class workorderController extends controller
 		$hose_flexible = addslashes($_POST['hose_flexible']);
 		$hose_flexible_obs = addslashes($_POST['hose_flexible_obs']);
 		$brake_pads = addslashes($_POST['brake_pads']);
-		$brake_pads_estimated = addslashes($_POST['brake_pads_estimated']); 
+		$brake_pads_estimated = addslashes($_POST['brake_pads_estimated']);
 		$brake_pads_obs = addslashes($_POST['brake_pads_obs']);
 		$brake_discs = addslashes($_POST['brake_discs']);
 		$brake_discs_estimated = addslashes($_POST['brake_discs_estimated']);
-		$brake_discs_obs = addslashes($_POST['brake_discs_obs']); 
+		$brake_discs_obs = addslashes($_POST['brake_discs_obs']);
 		$brake_calipers = addslashes($_POST['brake_calipers']);
 		$brake_calipers_obs = addslashes($_POST['brake_calipers_obs']);
 		$cover_plates = addslashes($_POST['cover_plates']);
@@ -705,13 +710,14 @@ class workorderController extends controller
 			$pedal_condition_obs,
 			$observations
 		);
-		header("Location: " . BASE_URL . "workorder/show/".$id);
+		header("Location: " . BASE_URL . "workorder/show/" . $id);
 	}
 
-	public function brakes_edit($id){
+	public function brakes_edit($id)
+	{
 		$u = new Users();
 		$order = new WorkOrder();
-        $u->setLoggedUser();
+		$u->setLoggedUser();
 
 		if (!$u->hasPermission('workorder')) {
 			header("Location: " . BASE_URL . "home/unauthorized");
@@ -737,11 +743,11 @@ class workorderController extends controller
 		$hose_flexible = addslashes($_POST['hose_flexible']);
 		$hose_flexible_obs = addslashes($_POST['hose_flexible_obs']);
 		$brake_pads = addslashes($_POST['brake_pads']);
-		$brake_pads_estimated = addslashes($_POST['brake_pads_estimated']); 
+		$brake_pads_estimated = addslashes($_POST['brake_pads_estimated']);
 		$brake_pads_obs = addslashes($_POST['brake_pads_obs']);
 		$brake_discs = addslashes($_POST['brake_discs']);
 		$brake_discs_estimated = addslashes($_POST['brake_discs_estimated']);
-		$brake_discs_obs = addslashes($_POST['brake_discs_obs']); 
+		$brake_discs_obs = addslashes($_POST['brake_discs_obs']);
 		$brake_calipers = addslashes($_POST['brake_calipers']);
 		$brake_calipers_obs = addslashes($_POST['brake_calipers_obs']);
 		$cover_plates = addslashes($_POST['cover_plates']);
@@ -770,12 +776,13 @@ class workorderController extends controller
 			$pedal_condition_obs,
 			$observations
 		);
-		header("Location: " . BASE_URL . "workorder/show/".$workorder_id);
+		header("Location: " . BASE_URL . "workorder/show/" . $workorder_id);
 	}
 
-	public function steeringsystem_create($id){
+	public function steeringsystem_create($id)
+	{
 		$u = new Users();
-        $u->setLoggedUser();
+		$u->setLoggedUser();
 
 		if (!$u->hasPermission('workorder')) {
 			header("Location: " . BASE_URL . "home/unauthorized");
@@ -815,13 +822,14 @@ class workorderController extends controller
 			$hoses_fittings_obs,
 			$observations
 		);
-		header("Location: " . BASE_URL . "workorder/show/".$id);
+		header("Location: " . BASE_URL . "workorder/show/" . $id);
 	}
 
-	public function steeringsystem_edit($id){
+	public function steeringsystem_edit($id)
+	{
 		$u = new Users();
 		$order = new WorkOrder();
-        $u->setLoggedUser();
+		$u->setLoggedUser();
 
 		if (!$u->hasPermission('workorder')) {
 			header("Location: " . BASE_URL . "home/unauthorized");
@@ -862,12 +870,13 @@ class workorderController extends controller
 			$hoses_fittings_obs,
 			$observations
 		);
-		header("Location: " . BASE_URL . "workorder/show/".$workorder_id);
+		header("Location: " . BASE_URL . "workorder/show/" . $workorder_id);
 	}
 
-	public function fuelsystem_create($id){
+	public function fuelsystem_create($id)
+	{
 		$u = new Users();
-        $u->setLoggedUser();
+		$u->setLoggedUser();
 
 		if (!$u->hasPermission('workorder')) {
 			header("Location: " . BASE_URL . "home/unauthorized");
@@ -901,13 +910,14 @@ class workorderController extends controller
 			$tank_hoses_obs,
 			$observations
 		);
-		header("Location: " . BASE_URL . "workorder/show/".$id);
+		header("Location: " . BASE_URL . "workorder/show/" . $id);
 	}
 
-	public function fuelsystem_edit($id){
+	public function fuelsystem_edit($id)
+	{
 		$u = new Users();
 		$order = new WorkOrder();
-        $u->setLoggedUser();
+		$u->setLoggedUser();
 
 		if (!$u->hasPermission('workorder')) {
 			header("Location: " . BASE_URL . "home/unauthorized");
@@ -942,6 +952,182 @@ class workorderController extends controller
 			$tank_hoses_obs,
 			$observations
 		);
-		header("Location: " . BASE_URL . "workorder/show/".$workorder_id);
+		header("Location: " . BASE_URL . "workorder/show/" . $workorder_id);
+	}
+
+	public function engine_create($id)
+	{
+		$u = new Users();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['workorder_id'] = $id;
+		$this->loadTemplate('workorder_engine_create', $data);
+	}
+
+	public function engine_store($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$straps = addslashes($_POST['straps']);
+		$straps_obs = addslashes($_POST['straps_obs']);
+		$oil_level = addslashes($_POST['oil_level']);
+		$oil_level_obs = addslashes($_POST['oil_level_obs']);
+		$cooling = addslashes($_POST['cooling']);
+		$cooling_obs = addslashes($_POST['cooling_obs']);
+		$tank_liquid_level = addslashes($_POST['tank_liquid_level']);
+		$tank_liquid_level_obs = addslashes($_POST['tank_liquid_level_obs']);
+		$coolant_status = addslashes($_POST['coolant_status']);
+		$coolant_status_obs = addslashes($_POST['coolant_status_obs']);
+		$hoses_coolant = addslashes($_POST['hoses_coolant']);
+		$hoses_coolant_obs = addslashes($_POST['hoses_coolant_obs']);
+		$radiator = addslashes($_POST['radiator']);
+		$radiator_obs = addslashes($_POST['radiator_obs']);
+		$fan_coolant = addslashes($_POST['fan_coolant']);
+		$fan_coolant_obs = addslashes($_POST['fan_coolant_obs']);
+		$water_pump = addslashes($_POST['water_pump']);
+		$water_pump_obs = addslashes($_POST['water_pump_obs']);
+		$cables_plugs = addslashes($_POST['cables_plugs']);
+		$cables_plugs_obs = addslashes($_POST['cables_plugs_obs']);
+		$transmission_system = addslashes($_POST['transmission_system']);
+		$transmission_system_type = addslashes($_POST['transmission_system_type']);
+		$transmission_system_obs = addslashes($_POST['transmission_system_obs']);
+		$gearbox_oil = addslashes($_POST['gearbox_oil']);
+		$gearbox_oil_obs = addslashes($_POST['gearbox_oil_obs']);
+		$hoods = addslashes($_POST['hoods']);
+		$hoods_obs = addslashes($_POST['hoods_obs']);
+		$observations = addslashes($_POST['observations']);
+
+
+		$order->engineCreate(
+			$id,
+			$straps,
+			$straps_obs,
+			$oil_level,
+			$oil_level_obs,
+			$cooling,
+			$cooling_obs,
+			$tank_liquid_level,
+			$tank_liquid_level_obs,
+			$coolant_status,
+			$coolant_status_obs,
+			$hoses_coolant,
+			$hoses_coolant_obs,
+			$radiator,
+			$radiator_obs,
+			$fan_coolant,
+			$fan_coolant_obs,
+			$water_pump,
+			$water_pump_obs,
+			$cables_plugs,
+			$cables_plugs_obs,
+			$transmission_system,
+			$transmission_system_type,
+			$transmission_system_obs,
+			$gearbox_oil,
+			$gearbox_oil_obs,
+			$hoods,
+			$hoods_obs,
+			$observations
+		);
+		header("Location: " . BASE_URL . "workorder/show/" . $id);
+	}
+
+	public function engine_edit($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['engine_info'] = $order->engineInfo($id);
+		$this->loadTemplate('workorder_engine_edit', $data);
+	}
+
+	public function engine_update($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$workorder_id = addslashes($_POST['workorder_id']);
+		$straps = addslashes($_POST['straps']);
+		$straps_obs = addslashes($_POST['straps_obs']);
+		$oil_level = addslashes($_POST['oil_level']);
+		$oil_level_obs = addslashes($_POST['oil_level_obs']);
+		$cooling = addslashes($_POST['cooling']);
+		$cooling_obs = addslashes($_POST['cooling_obs']);
+		$tank_liquid_level = addslashes($_POST['tank_liquid_level']);
+		$tank_liquid_level_obs = addslashes($_POST['tank_liquid_level_obs']);
+		$coolant_status = addslashes($_POST['coolant_status']);
+		$coolant_status_obs = addslashes($_POST['coolant_status_obs']);
+		$hoses_coolant = addslashes($_POST['hoses_coolant']);
+		$hoses_coolant_obs = addslashes($_POST['hoses_coolant_obs']);
+		$radiator = addslashes($_POST['radiator']);
+		$radiator_obs = addslashes($_POST['radiator_obs']);
+		$fan_coolant = addslashes($_POST['fan_coolant']);
+		$fan_coolant_obs = addslashes($_POST['fan_coolant_obs']);
+		$water_pump = addslashes($_POST['water_pump']);
+		$water_pump_obs = addslashes($_POST['water_pump_obs']);
+		$cables_plugs = addslashes($_POST['cables_plugs']);
+		$cables_plugs_obs = addslashes($_POST['cables_plugs_obs']);
+		$transmission_system = addslashes($_POST['transmission_system']);
+		$transmission_system_type = addslashes($_POST['transmission_system_type']);
+		$transmission_system_obs = addslashes($_POST['transmission_system_obs']);
+		$gearbox_oil = addslashes($_POST['gearbox_oil']);
+		$gearbox_oil_obs = addslashes($_POST['gearbox_oil_obs']);
+		$hoods = addslashes($_POST['hoods']);
+		$hoods_obs = addslashes($_POST['hoods_obs']);
+		$observations = addslashes($_POST['observations']);
+
+		$order->engineUpdate(
+			$id,
+			$workorder_id,
+			$straps,
+			$straps_obs,
+			$oil_level,
+			$oil_level_obs,
+			$cooling,
+			$cooling_obs,
+			$tank_liquid_level,
+			$tank_liquid_level_obs,
+			$coolant_status,
+			$coolant_status_obs,
+			$hoses_coolant,
+			$hoses_coolant_obs,
+			$radiator,
+			$radiator_obs,
+			$fan_coolant,
+			$fan_coolant_obs,
+			$water_pump,
+			$water_pump_obs,
+			$cables_plugs,
+			$cables_plugs_obs,
+			$transmission_system,
+			$transmission_system_type,
+			$transmission_system_obs,
+			$gearbox_oil,
+			$gearbox_oil_obs,
+			$hoods,
+			$hoods_obs,
+			$observations
+		);
+		header("Location: " . BASE_URL . "workorder/show/" . $workorder_id);
 	}
 }

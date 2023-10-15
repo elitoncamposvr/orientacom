@@ -1111,4 +1111,227 @@ class WorkOrder extends model
 		$sql->bindValue(":observations", $observations);
 		$sql->execute();
 	}
+
+	public function engineInfo($id)
+	{
+		$array = array();
+
+		$sql = $this->db->prepare("SELECT * FROM engine WHERE id = :id");
+		$sql->bindValue(":id", $id);
+		$sql->execute();
+
+		if ($sql->rowCount() > 0) {
+			$array = $sql->fetch();
+		}
+
+		return $array;
+	}
+
+	public function engineCreate(
+		$workorder_id,
+		$straps,
+		$straps_obs,
+		$oil_level,
+		$oil_level_obs,
+		$cooling,
+		$cooling_obs,
+		$tank_liquid_level,
+		$tank_liquid_level_obs,
+		$coolant_status,
+		$coolant_status_obs,
+		$hoses_coolant,
+		$hoses_coolant_obs,
+		$radiator,
+		$radiator_obs,
+		$fan_coolant,
+		$fan_coolant_obs,
+		$water_pump,
+		$water_pump_obs,
+		$cables_plugs,
+		$cables_plugs_obs,
+		$transmission_system,
+		$transmission_system_type,
+		$transmission_system_obs,
+		$gearbox_oil,
+		$gearbox_oil_obs,
+		$hoods,
+		$hoods_obs,
+		$observations
+	) {
+		$sql = $this->db->prepare("
+			INSERT INTO 
+				engine 
+			SET
+				status = 1, 
+				workorder_id = :workorder_id,
+				straps = :straps,
+				straps_obs = :straps_obs,
+				oil_level = :oil_level,
+				oil_level_obs = :oil_level_obs,
+				cooling = :cooling,
+				cooling_obs = :cooling_obs,
+				tank_liquid_level = :tank_liquid_level,
+				tank_liquid_level_obs = :tank_liquid_level_obs,
+				coolant_status = :coolant_status,
+				coolant_status_obs = :coolant_status_obs,
+				hoses_coolant = :hoses_coolant,
+				hoses_coolant_obs = :hoses_coolant_obs,
+				radiator = :radiator,
+				radiator_obs = :radiator_obs,
+				fan_coolant = :fan_coolant,
+				fan_coolant_obs = :fan_coolant_obs,
+				water_pump = :water_pump,
+				water_pump_obs = :water_pump_obs,
+				cables_plugs = :cables_plugs,
+				cables_plugs_obs = :cables_plugs_obs,
+				transmission_system = :transmission_system,
+				transmission_system_type = :transmission_system_type,
+				transmission_system_obs = :transmission_system_obs,
+				gearbox_oil = :gearbox_oil,
+				gearbox_oil_obs = :gearbox_oil_obs,
+				hoods = :hoods,
+				hoods_obs = :hoods_obs,
+				observations = :observations
+				");
+
+		$sql->bindValue(":workorder_id", $workorder_id);
+		$sql->bindValue(":straps", $straps);
+		$sql->bindValue(":straps_obs", $straps_obs);
+		$sql->bindValue(":oil_level", $oil_level);
+		$sql->bindValue(":oil_level_obs", $oil_level_obs);
+		$sql->bindValue(":cooling", $cooling);
+		$sql->bindValue(":cooling_obs", $cooling_obs);
+		$sql->bindValue(":tank_liquid_level", $tank_liquid_level);
+		$sql->bindValue(":tank_liquid_level_obs", $tank_liquid_level_obs);
+		$sql->bindValue(":coolant_status", $coolant_status);
+		$sql->bindValue(":coolant_status_obs", $coolant_status_obs);
+		$sql->bindValue(":hoses_coolant", $hoses_coolant);
+		$sql->bindValue(":hoses_coolant_obs", $hoses_coolant_obs);
+		$sql->bindValue(":radiator", $radiator);
+		$sql->bindValue(":radiator_obs", $radiator_obs);
+		$sql->bindValue(":fan_coolant", $fan_coolant);
+		$sql->bindValue(":fan_coolant_obs", $fan_coolant_obs);
+		$sql->bindValue(":water_pump", $water_pump);
+		$sql->bindValue(":water_pump_obs", $water_pump_obs);
+		$sql->bindValue(":cables_plugs", $cables_plugs);
+		$sql->bindValue(":cables_plugs_obs", $cables_plugs_obs);
+		$sql->bindValue(":transmission_system", $transmission_system);
+		$sql->bindValue(":transmission_system_type", $transmission_system_type);
+		$sql->bindValue(":transmission_system_obs", $transmission_system_obs);
+		$sql->bindValue(":gearbox_oil", $gearbox_oil);
+		$sql->bindValue(":gearbox_oil_obs", $gearbox_oil_obs);
+		$sql->bindValue(":hoods", $hoods);
+		$sql->bindValue(":hoods_obs", $hoods_obs);
+		$sql->bindValue(":observations", $observations);
+		$sql->execute();
+
+		$last_id = $this->db->lastInsertId();
+		$id = $workorder_id;
+
+		$sql2 = $this->db->prepare("UPDATE workorder SET engine_id = '$last_id' WHERE id = '$id'");
+		$sql2->execute();
+	}
+
+	public function engineUpdate(
+		$id,
+		$workorder_id,
+		$straps,
+		$straps_obs,
+		$oil_level,
+		$oil_level_obs,
+		$cooling,
+		$cooling_obs,
+		$tank_liquid_level,
+		$tank_liquid_level_obs,
+		$coolant_status,
+		$coolant_status_obs,
+		$hoses_coolant,
+		$hoses_coolant_obs,
+		$radiator,
+		$radiator_obs,
+		$fan_coolant,
+		$fan_coolant_obs,
+		$water_pump,
+		$water_pump_obs,
+		$cables_plugs,
+		$cables_plugs_obs,
+		$transmission_system,
+		$transmission_system_type,
+		$transmission_system_obs,
+		$gearbox_oil,
+		$gearbox_oil_obs,
+		$hoods,
+		$hoods_obs,
+		$observations
+	) {
+
+		$sql = $this->db->prepare("
+			UPDATE
+				engine 
+			SET
+				workorder_id = :workorder_id,
+				straps = :straps,
+				straps_obs = :straps_obs,
+				oil_level = :oil_level,
+				oil_level_obs = :oil_level_obs,
+				cooling = :cooling,
+				cooling_obs = :cooling_obs,
+				tank_liquid_level = :tank_liquid_level,
+				tank_liquid_level_obs = :tank_liquid_level_obs,
+				coolant_status = :coolant_status,
+				coolant_status_obs = :coolant_status_obs,
+				hoses_coolant = :hoses_coolant,
+				hoses_coolant_obs = :hoses_coolant_obs,
+				radiator = :radiator,
+				radiator_obs = :radiator_obs,
+				fan_coolant = :fan_coolant,
+				fan_coolant_obs = :fan_coolant_obs,
+				water_pump = :water_pump,
+				water_pump_obs = :water_pump_obs,
+				cables_plugs = :cables_plugs,
+				cables_plugs_obs = :cables_plugs_obs,
+				transmission_system = :transmission_system,
+				transmission_system_type = :transmission_system_type,
+				transmission_system_obs = :transmission_system_obs,
+				gearbox_oil = :gearbox_oil,
+				gearbox_oil_obs = :gearbox_oil_obs,
+				hoods = :hoods,
+				hoods_obs = :hoods_obs,
+				observations = :observations
+			WHERE
+				id = :id
+				");
+
+		$sql->bindValue(":id", $id);
+		$sql->bindValue(":workorder_id", $workorder_id);
+		$sql->bindValue(":straps", $straps);
+		$sql->bindValue(":straps_obs", $straps_obs);
+		$sql->bindValue(":oil_level", $oil_level);
+		$sql->bindValue(":oil_level_obs", $oil_level_obs);
+		$sql->bindValue(":cooling", $cooling);
+		$sql->bindValue(":cooling_obs", $cooling_obs);
+		$sql->bindValue(":tank_liquid_level", $tank_liquid_level);
+		$sql->bindValue(":tank_liquid_level_obs", $tank_liquid_level_obs);
+		$sql->bindValue(":coolant_status", $coolant_status);
+		$sql->bindValue(":coolant_status_obs", $coolant_status_obs);
+		$sql->bindValue(":hoses_coolant", $hoses_coolant);
+		$sql->bindValue(":hoses_coolant_obs", $hoses_coolant_obs);
+		$sql->bindValue(":radiator", $radiator);
+		$sql->bindValue(":radiator_obs", $radiator_obs);
+		$sql->bindValue(":fan_coolant", $fan_coolant);
+		$sql->bindValue(":fan_coolant_obs", $fan_coolant_obs);
+		$sql->bindValue(":water_pump", $water_pump);
+		$sql->bindValue(":water_pump_obs", $water_pump_obs);
+		$sql->bindValue(":cables_plugs", $cables_plugs);
+		$sql->bindValue(":cables_plugs_obs", $cables_plugs_obs);
+		$sql->bindValue(":transmission_system", $transmission_system);
+		$sql->bindValue(":transmission_system_type", $transmission_system_type);
+		$sql->bindValue(":transmission_system_obs", $transmission_system_obs);
+		$sql->bindValue(":gearbox_oil", $gearbox_oil);
+		$sql->bindValue(":gearbox_oil_obs", $gearbox_oil_obs);
+		$sql->bindValue(":hoods", $hoods);
+		$sql->bindValue(":hoods_obs", $hoods_obs);
+		$sql->bindValue(":observations", $observations);
+		$sql->execute();
+	}
 }
