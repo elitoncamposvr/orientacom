@@ -1238,4 +1238,152 @@ class workorderController extends controller
 		);
 		header("Location: " . BASE_URL . "workorder/show/" . $workorder_id);
 	}
+
+	public function general_create($id)
+	{
+		$u = new Users();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['workorder_id'] = $id;
+		$this->loadTemplate('workorder_general_create', $data);
+	}
+
+	public function general_store($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$air_conditioning = addslashes($_POST['air_conditioning']);
+		$air_conditioning_obs = addslashes($_POST['air_conditioning_obs']);
+		$windshield_reservoir_level = addslashes($_POST['windshield_reservoir_level']);
+		$windshield_reservoir_level_obs = addslashes($_POST['windshield_reservoir_level_obs']);
+		$windscreen_spray = addslashes($_POST['windscreen_spray']);
+		$windscreen_spray_obs = addslashes($_POST['windscreen_spray_obs']);
+		$vanes = addslashes($_POST['vanes']);
+		$vanes_obs = addslashes($_POST['vanes_obs']);
+		$battery = addslashes($_POST['battery']);
+		$battery_obs = addslashes($_POST['battery_obs']);
+		$bumper_core = addslashes($_POST['bumper_core']);
+		$bumper_core_obs = addslashes($_POST['bumper_core_obs']);
+		$airbox = addslashes($_POST['airbox']);
+		$airbox_obs = addslashes($_POST['airbox_obs']);
+		$exhaust = addslashes($_POST['exhaust']);
+		$exhaust_obs = addslashes($_POST['exhaust_obs']); 
+		$fixing_cables_wires = addslashes($_POST['fixing_cables_wires']);
+		$fixing_cables_wires_obs = addslashes($_POST['fixing_cables_wires_obs']);
+		$electronic_diagnostics = addslashes($_POST['electronic_diagnostics']);
+		$electronic_diagnostics_obs = addslashes($_POST['electronic_diagnostics_obs']);
+		$observations = addslashes($_POST['observations']);
+
+
+		$order->generalCreate(
+			$id,
+			$air_conditioning,
+			$air_conditioning_obs,
+			$windshield_reservoir_level,
+			$windshield_reservoir_level_obs,
+			$windscreen_spray,
+			$windscreen_spray_obs,
+			$vanes,
+			$vanes_obs,
+			$battery,
+			$battery_obs,
+			$bumper_core,
+			$bumper_core_obs,
+			$airbox,
+			$airbox_obs,
+			$exhaust,
+			$exhaust_obs,
+			$fixing_cables_wires,
+			$fixing_cables_wires_obs,
+			$electronic_diagnostics,
+			$electronic_diagnostics_obs,
+			$observations
+		);
+		header("Location: " . BASE_URL . "workorder/show/" . $id);
+	}
+
+	public function general_edit($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['general_info'] = $order->generalInfo($id);
+		$this->loadTemplate('workorder_general_edit', $data);
+	}
+
+	public function general_update($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$workorder_id = addslashes($_POST['workorder_id']);
+		$air_conditioning = addslashes($_POST['air_conditioning']);
+		$air_conditioning_obs = addslashes($_POST['air_conditioning_obs']);
+		$windshield_reservoir_level = addslashes($_POST['windshield_reservoir_level']);
+		$windshield_reservoir_level_obs = addslashes($_POST['windshield_reservoir_level_obs']);
+		$windscreen_spray = addslashes($_POST['windscreen_spray']);
+		$windscreen_spray_obs = addslashes($_POST['windscreen_spray_obs']);
+		$vanes = addslashes($_POST['vanes']);
+		$vanes_obs = addslashes($_POST['vanes_obs']);
+		$battery = addslashes($_POST['battery']);
+		$battery_obs = addslashes($_POST['battery_obs']);
+		$bumper_core = addslashes($_POST['bumper_core']);
+		$bumper_core_obs = addslashes($_POST['bumper_core_obs']);
+		$airbox = addslashes($_POST['airbox']);
+		$airbox_obs = addslashes($_POST['airbox_obs']);
+		$exhaust = addslashes($_POST['exhaust']);
+		$exhaust_obs = addslashes($_POST['exhaust_obs']); 
+		$fixing_cables_wires = addslashes($_POST['fixing_cables_wires']);
+		$fixing_cables_wires_obs = addslashes($_POST['fixing_cables_wires_obs']);
+		$electronic_diagnostics = addslashes($_POST['electronic_diagnostics']);
+		$electronic_diagnostics_obs = addslashes($_POST['electronic_diagnostics_obs']);
+		$observations = addslashes($_POST['observations']);
+
+
+		$order->generalUpdate(
+			$id,
+			$air_conditioning,
+			$air_conditioning_obs,
+			$windshield_reservoir_level,
+			$windshield_reservoir_level_obs,
+			$windscreen_spray,
+			$windscreen_spray_obs,
+			$vanes,
+			$vanes_obs,
+			$battery,
+			$battery_obs,
+			$bumper_core,
+			$bumper_core_obs,
+			$airbox,
+			$airbox_obs,
+			$exhaust,
+			$exhaust_obs,
+			$fixing_cables_wires,
+			$fixing_cables_wires_obs,
+			$electronic_diagnostics,
+			$electronic_diagnostics_obs,
+			$observations
+		);
+		header("Location: " . BASE_URL . "workorder/show/" . $workorder_id);
+	}
 }

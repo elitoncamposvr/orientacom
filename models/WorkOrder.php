@@ -1453,4 +1453,183 @@ class WorkOrder extends model
 		$sql->bindValue(":observations", $observations);
 		$sql->execute();
 	}
+
+	public function generalInfo($id)
+	{
+		$array = array();
+
+		$sql = $this->db->prepare("SELECT * FROM general_items WHERE id = :id");
+		$sql->bindValue(":id", $id);
+		$sql->execute();
+
+		if ($sql->rowCount() > 0) {
+			$array = $sql->fetch();
+		}
+
+		return $array;
+	}
+
+	public function generalCreate(
+		$workorder_id,
+		$air_conditioning,
+		$air_conditioning_obs,
+		$windshield_reservoir_level,
+		$windshield_reservoir_level_obs,
+		$windscreen_spray,
+		$windscreen_spray_obs,
+		$vanes,
+		$vanes_obs,
+		$battery,
+		$battery_obs,
+		$bumper_core,
+		$bumper_core_obs,
+		$airbox,
+		$airbox_obs,
+		$exhaust,
+		$exhaust_obs,
+		$fixing_cables_wires,
+		$fixing_cables_wires_obs,
+		$electronic_diagnostics,
+		$electronic_diagnostics_obs,
+		$observations
+	) {
+
+		$sql = $this->db->prepare("
+			INSERT INTO 
+				general_items 
+			SET
+				status = 1, 
+				workorder_id = :workorder_id,
+				air_conditioning = :air_conditioning,
+				air_conditioning_obs = :air_conditioning_obs,
+				windshield_reservoir_level = :windshield_reservoir_level,
+				windshield_reservoir_level_obs = :windshield_reservoir_level_obs,
+				windscreen_spray = :windscreen_spray,
+				windscreen_spray_obs = :windscreen_spray,
+				vanes = :vanes,
+				vanes_obs = :vanes_obs,
+				battery = :battery,
+				battery_obs = :battery_obs,
+				bumper_core = :bumper_core,
+				bumper_core_obs = :bumper_core_obs,
+				airbox = :airbox,
+				airbox_obs = :airbox_obs,
+				exhaust = :exhaust,
+				exhaust_obs = :exhaust_obs,
+				fixing_cables_wires = :fixing_cables_wires,
+				fixing_cables_wires_obs = :fixing_cables_wires_obs,
+				electronic_diagnostics = :electronic_diagnostics,
+				electronic_diagnostics_obs = :electronic_diagnostics_obs,
+				observations = :observations
+				");
+
+		$sql->bindValue(":workorder_id", $workorder_id);
+		$sql->bindValue(":air_conditioning", $air_conditioning);
+		$sql->bindValue(":air_conditioning_obs", $air_conditioning_obs);
+		$sql->bindValue(":windshield_reservoir_level", $windshield_reservoir_level);
+		$sql->bindValue(":windshield_reservoir_level_obs", $windshield_reservoir_level_obs);
+		$sql->bindValue(":windscreen_spray", $windscreen_spray);
+		$sql->bindValue(":windscreen_spray_obs", $windscreen_spray_obs);
+		$sql->bindValue(":vanes", $vanes);
+		$sql->bindValue(":vanes_obs", $vanes_obs);
+		$sql->bindValue(":battery", $battery);
+		$sql->bindValue(":battery_obs", $battery_obs);
+		$sql->bindValue(":bumper_core", $bumper_core);
+		$sql->bindValue(":bumper_core_obs", $bumper_core_obs);
+		$sql->bindValue(":airbox", $airbox);
+		$sql->bindValue(":airbox_obs", $airbox_obs);
+		$sql->bindValue(":exhaust", $exhaust);
+		$sql->bindValue(":exhaust_obs", $exhaust_obs);
+		$sql->bindValue(":fixing_cables_wires", $fixing_cables_wires);
+		$sql->bindValue(":fixing_cables_wires_obs", $fixing_cables_wires_obs);
+		$sql->bindValue(":electronic_diagnostics", $electronic_diagnostics);
+		$sql->bindValue(":electronic_diagnostics_obs", $electronic_diagnostics_obs);
+		$sql->bindValue(":observations", $observations);
+		$sql->execute();
+
+		$last_id = $this->db->lastInsertId();
+		$id = $workorder_id;
+
+		$sql2 = $this->db->prepare("UPDATE workorder SET general_items_id = '$last_id' WHERE id = '$id'");
+		$sql2->execute();
+	}
+
+	public function generalUpdate(
+		$id,
+		$air_conditioning,
+		$air_conditioning_obs,
+		$windshield_reservoir_level,
+		$windshield_reservoir_level_obs,
+		$windscreen_spray,
+		$windscreen_spray_obs,
+		$vanes,
+		$vanes_obs,
+		$battery,
+		$battery_obs,
+		$bumper_core,
+		$bumper_core_obs,
+		$airbox,
+		$airbox_obs,
+		$exhaust,
+		$exhaust_obs,
+		$fixing_cables_wires,
+		$fixing_cables_wires_obs,
+		$electronic_diagnostics,
+		$electronic_diagnostics_obs,
+		$observations
+	) {
+
+		$sql = $this->db->prepare("
+			UPDATE
+				general_items 
+			SET
+				air_conditioning = :air_conditioning,
+				air_conditioning_obs = :air_conditioning_obs,
+				windshield_reservoir_level = :windshield_reservoir_level,
+				windshield_reservoir_level_obs = :windshield_reservoir_level_obs,
+				windscreen_spray = :windscreen_spray,
+				windscreen_spray_obs = :windscreen_spray_obs,
+				vanes = :vanes,
+				vanes_obs = :vanes_obs,
+				battery = :battery,
+				battery_obs = :battery_obs,
+				bumper_core = :bumper_core,
+				bumper_core_obs = :bumper_core_obs,
+				airbox = :airbox,
+				airbox_obs = :airbox_obs,
+				exhaust = :exhaust,
+				exhaust_obs = :exhaust_obs,
+				fixing_cables_wires = :fixing_cables_wires,
+				fixing_cables_wires_obs = :fixing_cables_wires_obs,
+				electronic_diagnostics = :electronic_diagnostics,
+				electronic_diagnostics_obs = :electronic_diagnostics_obs,
+				observations = :observations
+			WHERE
+				id = :id
+				");
+
+		$sql->bindValue(":id", $id);
+		$sql->bindValue(":air_conditioning", $air_conditioning);
+		$sql->bindValue(":air_conditioning_obs", $air_conditioning_obs);
+		$sql->bindValue(":windshield_reservoir_level", $windshield_reservoir_level);
+		$sql->bindValue(":windshield_reservoir_level_obs", $windshield_reservoir_level_obs);
+		$sql->bindValue(":windscreen_spray", $windscreen_spray);
+		$sql->bindValue(":windscreen_spray_obs", $windscreen_spray_obs);
+		$sql->bindValue(":vanes", $vanes);
+		$sql->bindValue(":vanes_obs", $vanes_obs);
+		$sql->bindValue(":battery", $battery);
+		$sql->bindValue(":battery_obs", $battery_obs);
+		$sql->bindValue(":bumper_core", $bumper_core);
+		$sql->bindValue(":bumper_core_obs", $bumper_core_obs);
+		$sql->bindValue(":airbox", $airbox);
+		$sql->bindValue(":airbox_obs", $airbox_obs);
+		$sql->bindValue(":exhaust", $exhaust);
+		$sql->bindValue(":exhaust_obs", $exhaust_obs);
+		$sql->bindValue(":fixing_cables_wires", $fixing_cables_wires);
+		$sql->bindValue(":fixing_cables_wires_obs", $fixing_cables_wires_obs);
+		$sql->bindValue(":electronic_diagnostics", $electronic_diagnostics);
+		$sql->bindValue(":electronic_diagnostics_obs", $electronic_diagnostics_obs);
+		$sql->bindValue(":observations", $observations);
+		$sql->execute();
+	}
 }
