@@ -1334,4 +1334,123 @@ class WorkOrder extends model
 		$sql->bindValue(":observations", $observations);
 		$sql->execute();
 	}
+
+	public function suspensionInfo($id)
+	{
+		$array = array();
+
+		$sql = $this->db->prepare("SELECT * FROM suspension WHERE id = :id");
+		$sql->bindValue(":id", $id);
+		$sql->execute();
+
+		if ($sql->rowCount() > 0) {
+			$array = $sql->fetch();
+		}
+
+		return $array;
+	}
+
+	public function suspensionCreate(
+		$workorder_id,
+		$front_shock_absorber,
+		$front_shock_absorber_obs,
+		$rear_shock_absorber,
+		$rear_shock_absorber_obs,
+		$bushings,
+		$bushings_obs,
+		$suspension_pads,
+		$suspension_pads_obs,
+		$tray_arm,
+		$tray_arm_obs,
+		$observations
+	) {
+
+		$sql = $this->db->prepare("
+			INSERT INTO 
+				suspension 
+			SET
+				status = 1, 
+				workorder_id = :workorder_id,
+				front_shock_absorber = :front_shock_absorber,
+				front_shock_absorber_obs = :front_shock_absorber_obs,
+				rear_shock_absorber = :rear_shock_absorber,
+				rear_shock_absorber_obs = :rear_shock_absorber_obs,
+				bushings = :bushings,
+				bushings_obs = :bushings_obs,
+				suspension_pads = :suspension_pads,
+				suspension_pads_obs = :suspension_pads_obs,
+				tray_arm = :tray_arm,
+				tray_arm_obs = :tray_arm_obs,
+				observations = :observations
+				");
+
+		$sql->bindValue(":workorder_id", $workorder_id);
+		$sql->bindValue(":front_shock_absorber", $front_shock_absorber);
+		$sql->bindValue(":front_shock_absorber_obs", $front_shock_absorber_obs);
+		$sql->bindValue(":rear_shock_absorber", $rear_shock_absorber);
+		$sql->bindValue(":rear_shock_absorber_obs", $rear_shock_absorber_obs);
+		$sql->bindValue(":bushings", $bushings);
+		$sql->bindValue(":bushings_obs", $bushings_obs);
+		$sql->bindValue(":suspension_pads", $suspension_pads);
+		$sql->bindValue(":suspension_pads_obs", $suspension_pads_obs);
+		$sql->bindValue(":tray_arm", $tray_arm);
+		$sql->bindValue(":tray_arm_obs", $tray_arm_obs);
+		$sql->bindValue(":observations", $observations);
+		$sql->execute();
+
+		$last_id = $this->db->lastInsertId();
+		$id = $workorder_id;
+
+		$sql2 = $this->db->prepare("UPDATE workorder SET suspension_id = '$last_id' WHERE id = '$id'");
+		$sql2->execute();
+	}
+
+	public function suspensionUpdate(
+		$id,
+		$front_shock_absorber,
+		$front_shock_absorber_obs,
+		$rear_shock_absorber,
+		$rear_shock_absorber_obs,
+		$bushings,
+		$bushings_obs,
+		$suspension_pads,
+		$suspension_pads_obs,
+		$tray_arm,
+		$tray_arm_obs,
+		$observations
+	) {
+
+		$sql = $this->db->prepare("
+			UPDATE
+				suspension 
+			SET
+				front_shock_absorber = :front_shock_absorber,
+				front_shock_absorber_obs = :front_shock_absorber_obs,
+				rear_shock_absorber = :rear_shock_absorber,
+				rear_shock_absorber_obs = :rear_shock_absorber_obs,
+				bushings = :bushings,
+				bushings_obs = :bushings_obs,
+				suspension_pads = :suspension_pads,
+				suspension_pads_obs = :suspension_pads_obs,
+				tray_arm = :tray_arm,
+				tray_arm_obs = :tray_arm_obs,
+				observations = :observations
+			WHERE
+				id = :id
+				");
+
+		$sql->bindValue(":id", $id);
+		$sql->bindValue(":front_shock_absorber", $front_shock_absorber);
+		$sql->bindValue(":front_shock_absorber_obs", $front_shock_absorber_obs);
+		$sql->bindValue(":rear_shock_absorber", $rear_shock_absorber);
+		$sql->bindValue(":rear_shock_absorber_obs", $rear_shock_absorber_obs);
+		$sql->bindValue(":bushings", $bushings);
+		$sql->bindValue(":bushings_obs", $bushings_obs);
+		$sql->bindValue(":suspension_pads", $suspension_pads);
+		$sql->bindValue(":suspension_pads_obs", $suspension_pads_obs);
+		$sql->bindValue(":tray_arm", $tray_arm);
+		$sql->bindValue(":tray_arm_obs", $tray_arm_obs);
+		$sql->bindValue(":observations", $observations);
+		$sql->execute();
+	}
 }

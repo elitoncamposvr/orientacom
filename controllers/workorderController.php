@@ -1130,4 +1130,112 @@ class workorderController extends controller
 		);
 		header("Location: " . BASE_URL . "workorder/show/" . $workorder_id);
 	}
+	
+	public function suspension_create($id)
+	{
+		$u = new Users();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['workorder_id'] = $id;
+		$this->loadTemplate('workorder_suspension_create', $data);
+	}
+
+	public function suspension_store($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$front_shock_absorber = addslashes($_POST['front_shock_absorber']);
+		$front_shock_absorber_obs = addslashes($_POST['front_shock_absorber_obs']);
+		$rear_shock_absorber = addslashes($_POST['rear_shock_absorber']);
+		$rear_shock_absorber_obs = addslashes($_POST['rear_shock_absorber_obs']); 
+		$bushings = addslashes($_POST['bushings']); 
+		$bushings_obs = addslashes($_POST['bushings_obs']);
+		$suspension_pads = addslashes($_POST['suspension_pads']);
+		$suspension_pads_obs = addslashes($_POST['suspension_pads_obs']);
+		$tray_arm = addslashes($_POST['tray_arm']);
+		$tray_arm_obs = addslashes($_POST['tray_arm_obs']);
+		$observations = addslashes($_POST['observations']);
+
+
+		$order->suspensionCreate(
+			$id,
+			$front_shock_absorber,
+			$front_shock_absorber_obs,
+			$rear_shock_absorber,
+			$rear_shock_absorber_obs,
+			$bushings,
+			$bushings_obs,
+			$suspension_pads,
+			$suspension_pads_obs,
+			$tray_arm,
+			$tray_arm_obs,
+			$observations
+		);
+		header("Location: " . BASE_URL . "workorder/show/" . $id);
+	}
+
+	public function suspension_edit($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['suspension_info'] = $order->suspensionInfo($id);
+		$this->loadTemplate('workorder_suspension_edit', $data);
+	}
+
+	public function suspension_update($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$workorder_id = addslashes($_POST['workorder_id']);
+		$front_shock_absorber = addslashes($_POST['front_shock_absorber']);
+		$front_shock_absorber_obs = addslashes($_POST['front_shock_absorber_obs']);
+		$rear_shock_absorber = addslashes($_POST['rear_shock_absorber']);
+		$rear_shock_absorber_obs = addslashes($_POST['rear_shock_absorber_obs']); 
+		$bushings = addslashes($_POST['bushings']); 
+		$bushings_obs = addslashes($_POST['bushings_obs']);
+		$suspension_pads = addslashes($_POST['suspension_pads']);
+		$suspension_pads_obs = addslashes($_POST['suspension_pads_obs']);
+		$tray_arm = addslashes($_POST['tray_arm']);
+		$tray_arm_obs = addslashes($_POST['tray_arm_obs']);
+		$observations = addslashes($_POST['observations']);
+
+
+		$order->suspensionUpdate(
+			$id,
+			$front_shock_absorber,
+			$front_shock_absorber_obs,
+			$rear_shock_absorber,
+			$rear_shock_absorber_obs,
+			$bushings,
+			$bushings_obs,
+			$suspension_pads,
+			$suspension_pads_obs,
+			$tray_arm,
+			$tray_arm_obs,
+			$observations
+		);
+		header("Location: " . BASE_URL . "workorder/show/" . $workorder_id);
+	}
 }
