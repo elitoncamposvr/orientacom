@@ -240,7 +240,22 @@
                 </span>
             </div>
         </a>
-        <div class="w-full bg-slate-300 rounded-md p-1.5">Visual Interior</div>
+        <a href="<?php echo BASE_URL; ?>workorder/<?php echo ($order_info['interior_visual_id'] > 0) ? 'interior_edit/' . $order_info['interior_visual_id'] : 'interior_create/' . $order_info['id'] ?>">
+            <div class="w-full bg-slate-300 rounded-md p-1.5 flex justify-between items-center">
+                <div class="font-semibold text">
+                    Visual Interior
+                </div>
+                <span class="text-xs">
+                    <?php
+                    if ($order_info['interior_visual_id'] > 0) {
+                        echo '<span class="rounded-md p-1 bg-green-600 text-white">Concluído</span>';
+                    } else {
+                        echo '<span class="rounded-md p-1 bg-amber-400 text-white">Pendente</span>';
+                    }
+                    ?>
+                </span>
+            </div>
+        </a>
 
     </div>
 </div>

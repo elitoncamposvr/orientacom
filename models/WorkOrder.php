@@ -1933,4 +1933,346 @@ class WorkOrder extends model
 
 	}
 
+	public function interiorInfo($id)
+	{
+		$array = array();
+
+		$sql = $this->db->prepare("SELECT * FROM interior_visual WHERE id = :id");
+		$sql->bindValue(":id", $id);
+		$sql->execute();
+
+		if ($sql->rowCount() > 0) {
+			$array = $sql->fetch();
+		}
+
+		return $array;
+	}
+
+	public function interiorCreate(
+			$workorder_id,
+			$safety_lock,
+			$safety_lock_obs,
+			$remote_controls,
+			$remote_controls_obs,
+			$immobilizer,
+			$immobilizer_obs,
+			$ignition,
+			$ignition_obs,
+			$steering_whell_lock,
+			$steering_whell_lock_obs,
+			$horn,
+			$horn_obs,
+			$instrument_panel,
+			$instrument_panel_obs,
+			$multifunction_steering_whell,
+			$multifunction_steering_whell_obs,
+			$column_adjustment,
+			$column_adjustment_obs,
+			$airbag,
+			$airbag_obs,
+			$central_diagnostics,
+			$central_diagnostics_obs,
+			$hood_opening,
+			$hood_opening_obs,
+			$panel_controls,
+			$panel_controls_obs,
+			$onboard_clock,
+			$onboard_clock_obs,
+			$pcm,
+			$pcm_obs,
+			$audio,
+			$audio_obs,
+			$seat_heating,
+			$seat_heating_obs,
+			$steering_whell_heating,
+			$steering_whell_heating_obs,
+			$seat_memory,
+			$seat_memory_obs,
+			$cup_holder,
+			$cup_holder_obs,
+			$glove_compartment,
+			$glove_compartment_obs,
+			$belt_adjustment,
+			$belt_adjustment_obs,
+			$movable_roof,
+			$movable_roof_obs,
+			$air_conditioning,
+			$air_conditioning_obs,
+			$cabriolet,
+			$cabriolet_obs,
+			$locking_lids,
+			$locking_lids_obs,
+			$ceiling_cladding,
+			$ceiling_cladding_obs,
+			$observations
+	) {
+
+		$sql = $this->db->prepare("
+			INSERT INTO 
+				interior_visual 
+			SET
+				status = 1, 
+				workorder_id = :workorder_id,
+				safety_lock = :safety_lock,
+				safety_lock_obs = :safety_lock_obs,
+				remote_controls = :remote_controls,
+				remote_controls_obs = :remote_controls_obs,
+				immobilizer = :immobilizer,
+				immobilizer_obs = :immobilizer_obs,
+				ignition = :ignition,
+				ignition_obs = :ignition_obs,
+				steering_whell_lock = :steering_whell_lock,
+				steering_whell_lock_obs = :steering_whell_lock_obs,
+				horn = :horn,
+				horn_obs = :horn_obs,
+				instrument_panel = :instrument_panel,
+				instrument_panel_obs = :instrument_panel_obs,
+				multifunction_steering_whell = :multifunction_steering_whell,
+				multifunction_steering_whell_obs = :multifunction_steering_whell_obs,
+				column_adjustment = :column_adjustment,
+				column_adjustment_obs = :column_adjustment_obs,
+				airbag = :airbag,
+				airbag_obs = :airbag_obs,
+				central_diagnostics = :central_diagnostics,
+				central_diagnostics_obs = :central_diagnostics_obs,
+				hood_opening = :hood_opening,
+				hood_opening_obs = :hood_opening_obs,
+				panel_controls = :panel_controls,
+				panel_controls_obs = :panel_controls_obs,
+				onboard_clock = :onboard_clock,
+				onboard_clock_obs = :onboard_clock_obs,
+				pcm = :pcm,
+				pcm_obs = :pcm_obs,
+				audio = :audio,
+				audio_obs = :audio_obs,
+				seat_heating = :seat_heating,
+				seat_heating_obs = :seat_heating_obs,
+				steering_whell_heating = :steering_whell_heating,
+				steering_whell_heating_obs = :steering_whell_heating_obs,
+				seat_memory = :seat_memory,
+				seat_memory_obs = :seat_memory_obs,
+				cup_holder = :cup_holder,
+				cup_holder_obs = :cup_holder_obs,
+				glove_compartment = :glove_compartment,
+				glove_compartment_obs = :glove_compartment_obs,
+				belt_adjustment = :belt_adjustment,
+				belt_adjustment_obs = :belt_adjustment_obs,
+				movable_roof = :movable_roof,
+				movable_roof_obs = :movable_roof_obs,
+				air_conditioning = :air_conditioning,
+				air_conditioning_obs = :air_conditioning_obs,
+				cabriolet = :cabriolet,
+				cabriolet_obs = :cabriolet_obs,
+				locking_lids = :locking_lids,
+				locking_lids_obs = :locking_lids_obs,
+				ceiling_cladding = :ceiling_cladding,
+				ceiling_cladding_obs = :ceiling_cladding_obs,			
+				observations = :observations
+				");
+
+		$sql->bindValue(":workorder_id", $workorder_id);
+		$sql->bindValue(":safety_lock", $safety_lock);
+		$sql->bindValue(":safety_lock_obs", $safety_lock_obs);
+		$sql->bindValue(":remote_controls", $remote_controls);
+		$sql->bindValue(":remote_controls_obs", $remote_controls_obs);
+		$sql->bindValue(":immobilizer", $immobilizer);
+		$sql->bindValue(":immobilizer_obs", $immobilizer_obs);
+		$sql->bindValue(":ignition", $ignition);
+		$sql->bindValue(":ignition_obs", $ignition_obs);
+		$sql->bindValue(":steering_whell_lock", $steering_whell_lock);
+		$sql->bindValue(":steering_whell_lock_obs", $steering_whell_lock_obs);
+		$sql->bindValue(":horn", $horn);
+		$sql->bindValue(":horn_obs", $horn_obs);
+		$sql->bindValue(":instrument_panel", $instrument_panel);
+		$sql->bindValue(":instrument_panel_obs", $instrument_panel_obs);
+		$sql->bindValue(":multifunction_steering_whell", $multifunction_steering_whell);
+		$sql->bindValue(":multifunction_steering_whell_obs", $multifunction_steering_whell_obs);
+		$sql->bindValue(":column_adjustment", $column_adjustment);
+		$sql->bindValue(":column_adjustment_obs", $column_adjustment_obs);
+		$sql->bindValue(":airbag", $airbag);
+		$sql->bindValue(":airbag_obs", $airbag_obs);
+		$sql->bindValue(":central_diagnostics", $central_diagnostics);
+		$sql->bindValue(":central_diagnostics_obs", $central_diagnostics_obs);
+		$sql->bindValue(":hood_opening", $hood_opening);
+		$sql->bindValue(":hood_opening_obs", $hood_opening_obs);
+		$sql->bindValue(":panel_controls", $panel_controls);
+		$sql->bindValue(":panel_controls_obs", $panel_controls_obs);
+		$sql->bindValue(":onboard_clock", $onboard_clock);
+		$sql->bindValue(":onboard_clock_obs", $onboard_clock_obs);
+		$sql->bindValue(":pcm", $pcm);
+		$sql->bindValue(":pcm_obs", $pcm_obs);
+		$sql->bindValue(":audio", $audio);
+		$sql->bindValue(":audio_obs", $audio_obs);
+		$sql->bindValue(":seat_heating", $seat_heating);
+		$sql->bindValue(":seat_heating_obs", $seat_heating_obs);
+		$sql->bindValue(":steering_whell_heating", $steering_whell_heating);
+		$sql->bindValue(":steering_whell_heating_obs", $steering_whell_heating_obs);
+		$sql->bindValue(":seat_memory", $seat_memory);
+		$sql->bindValue(":seat_memory_obs", $seat_memory_obs);
+		$sql->bindValue(":cup_holder", $cup_holder);
+		$sql->bindValue(":cup_holder_obs", $cup_holder_obs);
+		$sql->bindValue(":glove_compartment", $glove_compartment);
+		$sql->bindValue(":glove_compartment_obs", $glove_compartment_obs);
+		$sql->bindValue(":belt_adjustment", $belt_adjustment);
+		$sql->bindValue(":belt_adjustment_obs", $belt_adjustment_obs);
+		$sql->bindValue(":movable_roof", $movable_roof);
+		$sql->bindValue(":movable_roof_obs", $movable_roof_obs);
+		$sql->bindValue(":air_conditioning", $air_conditioning);
+		$sql->bindValue(":air_conditioning_obs", $air_conditioning_obs);
+		$sql->bindValue(":cabriolet", $cabriolet);
+		$sql->bindValue(":cabriolet_obs", $cabriolet_obs);
+		$sql->bindValue(":locking_lids", $locking_lids);
+		$sql->bindValue(":locking_lids_obs", $locking_lids_obs);
+		$sql->bindValue(":ceiling_cladding", $ceiling_cladding);
+		$sql->bindValue(":ceiling_cladding_obs", $ceiling_cladding_obs);
+		$sql->bindValue(":observations", $observations);
+		$sql->execute();
+
+		// $last_id = $this->db->lastInsertId();
+		// $id = $workorder_id;
+
+		// $sql2 = $this->db->prepare("UPDATE workorder SET interior_visual_id = '$last_id' WHERE id = '$id'");
+		// $sql2->execute();
+	}
+
+	public function interiorUpdate(
+		$id,
+		$low_beam_drive,
+		$low_beam_drive_obs,
+		$high_beam_drive,
+		$high_beam_drive_obs,
+		$flashlights,
+		$flashlights_obs,
+		$longrange_headlamp,
+		$longrange_headlamp_obs,
+		$brake_light,
+		$brake_light_obs,
+		$reverse_light,
+		$reverse_light_obs,
+		$sensors_cameras,
+		$sensors_cameras_obs,
+		$dashboard_lights,
+		$dashboard_lights_obs,
+		$interior_lighting,
+		$interior_lighting_obs,
+		$internal_light,
+		$internal_light_obs,
+		$arrow_light_right,
+		$arrow_light_right_obs,
+		$arrow_light_left,
+		$arrow_light_left_obs,
+		$warning_flashers,
+		$warning_flashers_obs,
+		$headlight_washing,
+		$headlight_washing_obs,
+		$front_windshield_wiper,
+		$front_windshield_wiper_obs,
+		$rear_windshield_wiper,
+		$rear_windshield_wiper_obs,
+		$sunshade,
+		$sunshade_obs,
+		$glass_heating,
+		$glass_heating_obs,
+		$rearview_adjustments,
+		$rearview_adjustments_obs,
+		$electric_windows,
+		$electric_windows_obs,
+		$observations
+	) {
+
+		$sql = $this->db->prepare("
+			UPDATE
+				light_glass 
+			SET
+				low_beam_drive = :low_beam_drive,
+				low_beam_drive_obs = :low_beam_drive_obs,
+				high_beam_drive = :high_beam_drive,
+				high_beam_drive_obs = :high_beam_drive_obs,
+				flashlights = :flashlights,
+				flashlights_obs = :flashlights_obs,
+				longrange_headlamp = :longrange_headlamp,
+				longrange_headlamp_obs = :longrange_headlamp_obs,
+				brake_light = :brake_light,
+				brake_light_obs = :brake_light_obs,
+				reverse_light = :reverse_light,
+				reverse_light_obs = :reverse_light_obs,
+				sensors_cameras = :sensors_cameras,
+				sensors_cameras_obs = :sensors_cameras_obs,
+				dashboard_lights = :dashboard_lights,
+				dashboard_lights_obs = :dashboard_lights_obs,
+				interior_lighting = :interior_lighting,
+				interior_lighting_obs = :interior_lighting_obs,
+				internal_light = :internal_light,
+				internal_light_obs = :internal_light_obs,
+				arrow_light_right = :arrow_light_right,
+				arrow_light_right_obs = :arrow_light_right_obs,
+				arrow_light_left = :arrow_light_left,
+				arrow_light_left_obs = :arrow_light_left_obs,
+				warning_flashers = :warning_flashers,
+				warning_flashers_obs = :warning_flashers_obs,
+				headlight_washing = :headlight_washing,
+				headlight_washing_obs = :headlight_washing_obs,
+				front_windshield_wiper = :front_windshield_wiper,
+				front_windshield_wiper_obs = :front_windshield_wiper_obs,
+				rear_windshield_wiper = :rear_windshield_wiper,
+				rear_windshield_wiper_obs = :rear_windshield_wiper_obs,
+				sunshade = :sunshade,
+				sunshade_obs = :sunshade_obs,
+				glass_heating = :glass_heating,
+				glass_heating_obs = :glass_heating_obs,
+				rearview_adjustments = :rearview_adjustments,
+				rearview_adjustments_obs = :rearview_adjustments_obs,
+				electric_windows = :electric_windows,
+				electric_windows_obs = :electric_windows_obs,
+				observations = :observations
+			WHERE
+				id = :id
+				");
+
+		$sql->bindValue(":id", $id);
+		$sql->bindValue(":low_beam_drive", $low_beam_drive);
+		$sql->bindValue(":low_beam_drive_obs", $low_beam_drive_obs);
+		$sql->bindValue(":high_beam_drive", $high_beam_drive);
+		$sql->bindValue(":high_beam_drive_obs", $high_beam_drive_obs);
+		$sql->bindValue(":flashlights", $flashlights);
+		$sql->bindValue(":flashlights_obs", $flashlights_obs);
+		$sql->bindValue(":longrange_headlamp", $longrange_headlamp);
+		$sql->bindValue(":longrange_headlamp_obs", $longrange_headlamp_obs);
+		$sql->bindValue(":brake_light", $brake_light);
+		$sql->bindValue(":brake_light_obs", $brake_light_obs);
+		$sql->bindValue(":reverse_light", $reverse_light);
+		$sql->bindValue(":reverse_light_obs", $reverse_light_obs);
+		$sql->bindValue(":sensors_cameras", $sensors_cameras);
+		$sql->bindValue(":sensors_cameras_obs", $sensors_cameras_obs);
+		$sql->bindValue(":dashboard_lights", $dashboard_lights);
+		$sql->bindValue(":dashboard_lights_obs", $dashboard_lights_obs);
+		$sql->bindValue(":interior_lighting", $interior_lighting);
+		$sql->bindValue(":interior_lighting_obs", $interior_lighting_obs);
+		$sql->bindValue(":internal_light", $internal_light);
+		$sql->bindValue(":internal_light_obs", $internal_light_obs);
+		$sql->bindValue(":arrow_light_right", $arrow_light_right);
+		$sql->bindValue(":arrow_light_right_obs", $arrow_light_right_obs);
+		$sql->bindValue(":arrow_light_left", $arrow_light_left);
+		$sql->bindValue(":arrow_light_left_obs", $arrow_light_left_obs);
+		$sql->bindValue(":warning_flashers", $warning_flashers);
+		$sql->bindValue(":warning_flashers_obs", $warning_flashers_obs);
+		$sql->bindValue(":headlight_washing", $headlight_washing);
+		$sql->bindValue(":headlight_washing_obs", $headlight_washing_obs);
+		$sql->bindValue(":front_windshield_wiper", $front_windshield_wiper);
+		$sql->bindValue(":front_windshield_wiper_obs", $front_windshield_wiper_obs);
+		$sql->bindValue(":rear_windshield_wiper", $rear_windshield_wiper);
+		$sql->bindValue(":rear_windshield_wiper_obs", $rear_windshield_wiper_obs);
+		$sql->bindValue(":sunshade", $sunshade);
+		$sql->bindValue(":sunshade_obs", $sunshade_obs);
+		$sql->bindValue(":glass_heating", $glass_heating);
+		$sql->bindValue(":glass_heating_obs", $glass_heating_obs);
+		$sql->bindValue(":rearview_adjustments", $rearview_adjustments);
+		$sql->bindValue(":rearview_adjustments_obs", $rearview_adjustments_obs);
+		$sql->bindValue(":electric_windows", $electric_windows);
+		$sql->bindValue(":electric_windows_obs", $electric_windows_obs);
+		$sql->bindValue(":observations", $observations);
+		$sql->execute();
+
+	}
+
 }
