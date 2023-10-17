@@ -1633,6 +1633,21 @@ class WorkOrder extends model
 		$sql->execute();
 	}
 
+	public function lightglassInfo($id)
+	{
+		$array = array();
+
+		$sql = $this->db->prepare("SELECT * FROM light_glass WHERE id = :id");
+		$sql->bindValue(":id", $id);
+		$sql->execute();
+
+		if ($sql->rowCount() > 0) {
+			$array = $sql->fetch();
+		}
+
+		return $array;
+	}
+
 	public function lightglassCreate(
 		$workorder_id,
 		$low_beam_drive,
@@ -1777,4 +1792,145 @@ class WorkOrder extends model
 		$sql2 = $this->db->prepare("UPDATE workorder SET light_glass_id = '$last_id' WHERE id = '$id'");
 		$sql2->execute();
 	}
+
+	public function lightglassUpdate(
+		$id,
+		$low_beam_drive,
+		$low_beam_drive_obs,
+		$high_beam_drive,
+		$high_beam_drive_obs,
+		$flashlights,
+		$flashlights_obs,
+		$longrange_headlamp,
+		$longrange_headlamp_obs,
+		$brake_light,
+		$brake_light_obs,
+		$reverse_light,
+		$reverse_light_obs,
+		$sensors_cameras,
+		$sensors_cameras_obs,
+		$dashboard_lights,
+		$dashboard_lights_obs,
+		$interior_lighting,
+		$interior_lighting_obs,
+		$internal_light,
+		$internal_light_obs,
+		$arrow_light_right,
+		$arrow_light_right_obs,
+		$arrow_light_left,
+		$arrow_light_left_obs,
+		$warning_flashers,
+		$warning_flashers_obs,
+		$headlight_washing,
+		$headlight_washing_obs,
+		$front_windshield_wiper,
+		$front_windshield_wiper_obs,
+		$rear_windshield_wiper,
+		$rear_windshield_wiper_obs,
+		$sunshade,
+		$sunshade_obs,
+		$glass_heating,
+		$glass_heating_obs,
+		$rearview_adjustments,
+		$rearview_adjustments_obs,
+		$electric_windows,
+		$electric_windows_obs,
+		$observations
+	) {
+
+		$sql = $this->db->prepare("
+			UPDATE
+				light_glass 
+			SET
+				low_beam_drive = :low_beam_drive,
+				low_beam_drive_obs = :low_beam_drive_obs,
+				high_beam_drive = :high_beam_drive,
+				high_beam_drive_obs = :high_beam_drive_obs,
+				flashlights = :flashlights,
+				flashlights_obs = :flashlights_obs,
+				longrange_headlamp = :longrange_headlamp,
+				longrange_headlamp_obs = :longrange_headlamp_obs,
+				brake_light = :brake_light,
+				brake_light_obs = :brake_light_obs,
+				reverse_light = :reverse_light,
+				reverse_light_obs = :reverse_light_obs,
+				sensors_cameras = :sensors_cameras,
+				sensors_cameras_obs = :sensors_cameras_obs,
+				dashboard_lights = :dashboard_lights,
+				dashboard_lights_obs = :dashboard_lights_obs,
+				interior_lighting = :interior_lighting,
+				interior_lighting_obs = :interior_lighting_obs,
+				internal_light = :internal_light,
+				internal_light_obs = :internal_light_obs,
+				arrow_light_right = :arrow_light_right,
+				arrow_light_right_obs = :arrow_light_right_obs,
+				arrow_light_left = :arrow_light_left,
+				arrow_light_left_obs = :arrow_light_left_obs,
+				warning_flashers = :warning_flashers,
+				warning_flashers_obs = :warning_flashers_obs,
+				headlight_washing = :headlight_washing,
+				headlight_washing_obs = :headlight_washing_obs,
+				front_windshield_wiper = :front_windshield_wiper,
+				front_windshield_wiper_obs = :front_windshield_wiper_obs,
+				rear_windshield_wiper = :rear_windshield_wiper,
+				rear_windshield_wiper_obs = :rear_windshield_wiper_obs,
+				sunshade = :sunshade,
+				sunshade_obs = :sunshade_obs,
+				glass_heating = :glass_heating,
+				glass_heating_obs = :glass_heating_obs,
+				rearview_adjustments = :rearview_adjustments,
+				rearview_adjustments_obs = :rearview_adjustments_obs,
+				electric_windows = :electric_windows,
+				electric_windows_obs = :electric_windows_obs,
+				observations = :observations
+			WHERE
+				id = :id
+				");
+
+		$sql->bindValue(":id", $id);
+		$sql->bindValue(":low_beam_drive", $low_beam_drive);
+		$sql->bindValue(":low_beam_drive_obs", $low_beam_drive_obs);
+		$sql->bindValue(":high_beam_drive", $high_beam_drive);
+		$sql->bindValue(":high_beam_drive_obs", $high_beam_drive_obs);
+		$sql->bindValue(":flashlights", $flashlights);
+		$sql->bindValue(":flashlights_obs", $flashlights_obs);
+		$sql->bindValue(":longrange_headlamp", $longrange_headlamp);
+		$sql->bindValue(":longrange_headlamp_obs", $longrange_headlamp_obs);
+		$sql->bindValue(":brake_light", $brake_light);
+		$sql->bindValue(":brake_light_obs", $brake_light_obs);
+		$sql->bindValue(":reverse_light", $reverse_light);
+		$sql->bindValue(":reverse_light_obs", $reverse_light_obs);
+		$sql->bindValue(":sensors_cameras", $sensors_cameras);
+		$sql->bindValue(":sensors_cameras_obs", $sensors_cameras_obs);
+		$sql->bindValue(":dashboard_lights", $dashboard_lights);
+		$sql->bindValue(":dashboard_lights_obs", $dashboard_lights_obs);
+		$sql->bindValue(":interior_lighting", $interior_lighting);
+		$sql->bindValue(":interior_lighting_obs", $interior_lighting_obs);
+		$sql->bindValue(":internal_light", $internal_light);
+		$sql->bindValue(":internal_light_obs", $internal_light_obs);
+		$sql->bindValue(":arrow_light_right", $arrow_light_right);
+		$sql->bindValue(":arrow_light_right_obs", $arrow_light_right_obs);
+		$sql->bindValue(":arrow_light_left", $arrow_light_left);
+		$sql->bindValue(":arrow_light_left_obs", $arrow_light_left_obs);
+		$sql->bindValue(":warning_flashers", $warning_flashers);
+		$sql->bindValue(":warning_flashers_obs", $warning_flashers_obs);
+		$sql->bindValue(":headlight_washing", $headlight_washing);
+		$sql->bindValue(":headlight_washing_obs", $headlight_washing_obs);
+		$sql->bindValue(":front_windshield_wiper", $front_windshield_wiper);
+		$sql->bindValue(":front_windshield_wiper_obs", $front_windshield_wiper_obs);
+		$sql->bindValue(":rear_windshield_wiper", $rear_windshield_wiper);
+		$sql->bindValue(":rear_windshield_wiper_obs", $rear_windshield_wiper_obs);
+		$sql->bindValue(":sunshade", $sunshade);
+		$sql->bindValue(":sunshade_obs", $sunshade_obs);
+		$sql->bindValue(":glass_heating", $glass_heating);
+		$sql->bindValue(":glass_heating_obs", $glass_heating_obs);
+		$sql->bindValue(":rearview_adjustments", $rearview_adjustments);
+		$sql->bindValue(":rearview_adjustments_obs", $rearview_adjustments_obs);
+		$sql->bindValue(":electric_windows", $electric_windows);
+		$sql->bindValue(":electric_windows_obs", $electric_windows_obs);
+		$sql->bindValue(":observations", $observations);
+		$sql->execute();
+
+	}
+
 }
