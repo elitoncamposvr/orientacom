@@ -2,7 +2,7 @@
 	<span class="breadcrumb-title">Ordem de Serviço</span>
 	<span class="breadcrumb-btns">
 		<span>
-			<a href="<?php echo BASE_URL; ?>workorder/create" class="btn hover:btn-hover"><i class="fa-solid fa-plus"></i> Novo</a>
+			<a href="<?php echo BASE_URL; ?>workorder/create" class="btn hover:btn--hover"><i class="fa-solid fa-plus"></i> Novo</a>
 		</span>
 	</span>
 </div>

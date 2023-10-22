@@ -77,6 +77,6 @@
     </div>
 
     <div class="input-line justify-center py-2">
-        <button class="btn hover:btn-hover" type="submit"><i class="fa-solid fa-pen-to-square"></i> SALVAR INFORMAÇÕES</button>
+        <button class="btn hover:btn--hover" type="submit"><i class="fa-solid fa-pen-to-square"></i> SALVAR INFORMAÇÕES</button>
     </div>
 </form>

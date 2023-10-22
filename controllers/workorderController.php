@@ -1755,4 +1755,147 @@ class workorderController extends controller
 		);
 		header("Location: " . BASE_URL . "workorder/show/" . $id);
 	}
+
+	public function interior_edit($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['interior'] = $order->InteriorInfo($id);
+		$this->loadTemplate('workorder_interior_visual_edit', $data);
+	}
+
+	public function interior_update($id)
+	{
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$workorder_id = addslashes($_POST['workorder_id']);
+		$safety_lock = addslashes($_POST['safety_lock']);
+		$safety_lock_obs = addslashes($_POST['safety_lock_obs']);
+		$remote_controls = addslashes($_POST['remote_controls']);
+		$remote_controls_obs = addslashes($_POST['remote_controls_obs']);
+		$immobilizer = addslashes($_POST['immobilizer']);
+		$immobilizer_obs = addslashes($_POST['immobilizer_obs']);
+		$ignition = addslashes($_POST['ignition']);
+		$ignition_obs = addslashes($_POST['ignition_obs']);
+		$steering_whell_lock = addslashes($_POST['steering_whell_lock']);
+		$steering_whell_lock_obs = addslashes($_POST['steering_whell_lock_obs']);
+		$horn = addslashes($_POST['horn']);
+		$horn_obs = addslashes($_POST['horn_obs']);
+		$instrument_panel = addslashes($_POST['instrument_panel']);
+		$instrument_panel_obs = addslashes($_POST['instrument_panel_obs']);
+		$multifunction_steering_whell = addslashes($_POST['multifunction_steering_whell']);
+		$multifunction_steering_whell_obs = addslashes($_POST['multifunction_steering_whell_obs']);
+		$column_adjustment = addslashes($_POST['column_adjustment']);
+		$column_adjustment_obs = addslashes($_POST['column_adjustment_obs']);
+		$airbag = addslashes($_POST['airbag']);
+		$airbag_obs = addslashes($_POST['airbag_obs']);
+		$central_diagnostics = addslashes($_POST['central_diagnostics']);
+		$central_diagnostics_obs = addslashes($_POST['central_diagnostics_obs']);
+		$hood_opening = addslashes($_POST['hood_opening']);
+		$hood_opening_obs = addslashes($_POST['hood_opening_obs']);
+		$panel_controls = addslashes($_POST['panel_controls']);
+		$panel_controls_obs = addslashes($_POST['panel_controls_obs']);
+		$onboard_clock = addslashes($_POST['onboard_clock']);
+		$onboard_clock_obs = addslashes($_POST['onboard_clock_obs']);
+		$pcm = addslashes($_POST['pcm']);
+		$pcm_obs = addslashes($_POST['pcm_obs']); 
+		$audio = addslashes($_POST['audio']);
+		$audio_obs = addslashes($_POST['audio_obs']);
+		$seat_heating = addslashes($_POST['seat_heating']);
+		$seat_heating_obs = addslashes($_POST['seat_heating_obs']);
+		$steering_whell_heating = addslashes($_POST['steering_whell_heating']);
+		$steering_whell_heating_obs = addslashes($_POST['steering_whell_heating_obs']);
+		$seat_memory = addslashes($_POST['seat_memory']);
+		$seat_memory_obs = addslashes($_POST['seat_memory_obs']);
+		$cup_holder = addslashes($_POST['cup_holder']); 
+		$cup_holder_obs = addslashes($_POST['cup_holder_obs']); 
+		$glove_compartment = addslashes($_POST['glove_compartment']);
+		$glove_compartment_obs = addslashes($_POST['glove_compartment_obs']);
+		$belt_adjustment = addslashes($_POST['belt_adjustment']);
+		$belt_adjustment_obs = addslashes($_POST['belt_adjustment_obs']);
+		$movable_roof = addslashes($_POST['movable_roof']);
+		$movable_roof_obs = addslashes($_POST['movable_roof_obs']);
+		$air_conditioning = addslashes($_POST['air_conditioning']);
+		$air_conditioning_obs = addslashes($_POST['air_conditioning_obs']);
+		$cabriolet = addslashes($_POST['cabriolet']);
+		$cabriolet_obs = addslashes($_POST['cabriolet_obs']);
+		$locking_lids = addslashes($_POST['locking_lids']);
+		$locking_lids_obs = addslashes($_POST['locking_lids_obs']);
+		$ceiling_cladding = addslashes($_POST['ceiling_cladding']);
+		$ceiling_cladding_obs = addslashes($_POST['ceiling_cladding_obs']);
+		$observations = addslashes($_POST['observations']);
+
+
+		$order->interiorUpdate(
+			$id,
+			$safety_lock,
+			$safety_lock_obs,
+			$remote_controls,
+			$remote_controls_obs,
+			$immobilizer,
+			$immobilizer_obs,
+			$ignition,
+			$ignition_obs,
+			$steering_whell_lock,
+			$steering_whell_lock_obs,
+			$horn,
+			$horn_obs,
+			$instrument_panel,
+			$instrument_panel_obs,
+			$multifunction_steering_whell,
+			$multifunction_steering_whell_obs,
+			$column_adjustment,
+			$column_adjustment_obs,
+			$airbag,
+			$airbag_obs,
+			$central_diagnostics,
+			$central_diagnostics_obs,
+			$hood_opening,
+			$hood_opening_obs,
+			$panel_controls,
+			$panel_controls_obs,
+			$onboard_clock,
+			$onboard_clock_obs,
+			$pcm,
+			$pcm_obs,
+			$audio,
+			$audio_obs,
+			$seat_heating,
+			$seat_heating_obs,
+			$steering_whell_heating,
+			$steering_whell_heating_obs,
+			$seat_memory,
+			$seat_memory_obs,
+			$cup_holder,
+			$cup_holder_obs,
+			$glove_compartment,
+			$glove_compartment_obs,
+			$belt_adjustment,
+			$belt_adjustment_obs,
+			$movable_roof,
+			$movable_roof_obs,
+			$air_conditioning,
+			$air_conditioning_obs,
+			$cabriolet,
+			$cabriolet_obs,
+			$locking_lids,
+			$locking_lids_obs,
+			$ceiling_cladding,
+			$ceiling_cladding_obs,
+			$observations
+		);
+		header("Location: " . BASE_URL . "workorder/show/" . $workorder_id);
+	}
 }

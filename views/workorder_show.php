@@ -97,7 +97,7 @@
 <div class="input-line p-2 my-2 bg-slate-200 rounded-md">
     <div class="grid grid-cols-3 gap-4 w-full">
         <a href="<?php echo BASE_URL; ?>workorder/<?php echo ($visual_exterior_status > 0) ? 'visualexterior_edit/' . $order_info['visual_exterior_id'] : 'visualexterior_create/' . $order_info['id'] ?>">
-            <div class="w-full bg-slate-300 rounded-md p-1.5 flex justify-between items-center">
+            <div class="card-link hover:card-link--hover">
                 <div class="font-semibold text">
                     Visual Exterior
                 </div>
@@ -113,7 +113,7 @@
             </div>
         </a>
         <a href="<?php echo BASE_URL; ?>workorder/<?php echo ($order_info['tires_id'] > 0) ? 'tires_edit/' . $order_info['tires_id'] : 'tires_create/' . $order_info['id'] ?>">
-            <div class="w-full bg-slate-300 rounded-md p-1.5 flex justify-between items-center">
+            <div class="card-link hover:card-link--hover">
                 <div class="font-semibold text">
                     Pneus
                 </div>
@@ -129,7 +129,7 @@
             </div>
         </a>
         <a href="<?php echo BASE_URL; ?>workorder/<?php echo ($order_info['brakes_id'] > 0) ? 'brakes_edit/' . $order_info['brakes_id'] : 'brakes_create/' . $order_info['id'] ?>">
-            <div class="w-full bg-slate-300 rounded-md p-1.5 flex justify-between items-center">
+            <div class="card-link hover:card-link--hover">
                 <div class="font-semibold text">
                     Freios
                 </div>
@@ -145,7 +145,7 @@
             </div>
         </a>
         <a href="<?php echo BASE_URL; ?>workorder/<?php echo ($order_info['steering_system_id'] > 0) ? 'steeringsystem_edit/' . $order_info['steering_system_id'] : 'steeringsystem_create/' . $order_info['id'] ?>">
-            <div class="w-full bg-slate-300 rounded-md p-1.5 flex justify-between items-center">
+            <div class="card-link hover:card-link--hover">
                 <div class="font-semibold text">
                     Direção
                 </div>
@@ -161,7 +161,7 @@
             </div>
         </a>
         <a href="<?php echo BASE_URL; ?>workorder/<?php echo ($order_info['fuel_system_id'] > 0) ? 'fuelsystem_edit/' . $order_info['fuel_system_id'] : 'fuelsystem_create/' . $order_info['id'] ?>">
-            <div class="w-full bg-slate-300 rounded-md p-1.5 flex justify-between items-center">
+            <div class="card-link hover:card-link--hover">
                 <div class="font-semibold text">
                     Combustível
                 </div>
@@ -177,7 +177,7 @@
             </div>
         </a>
         <a href="<?php echo BASE_URL; ?>workorder/<?php echo ($order_info['engine_id'] > 0) ? 'engine_edit/' . $order_info['engine_id'] : 'engine_create/' . $order_info['id'] ?>">
-            <div class="w-full bg-slate-300 rounded-md p-1.5 flex justify-between items-center">
+            <div class="card-link hover:card-link--hover">
                 <div class="font-semibold text">
                     Motor
                 </div>
@@ -193,7 +193,7 @@
             </div>
         </a>
         <a href="<?php echo BASE_URL; ?>workorder/<?php echo ($order_info['suspension_id'] > 0) ? 'suspension_edit/' . $order_info['suspension_id'] : 'suspension_create/' . $order_info['id'] ?>">
-            <div class="w-full bg-slate-300 rounded-md p-1.5 flex justify-between items-center">
+            <div class="card-link hover:card-link--hover">
                 <div class="font-semibold text">
                     Suspensão
                 </div>
@@ -209,7 +209,7 @@
             </div>
         </a>
         <a href="<?php echo BASE_URL; ?>workorder/<?php echo ($order_info['general_items_id'] > 0) ? 'general_edit/' . $order_info['general_items_id'] : 'general_create/' . $order_info['id'] ?>">
-            <div class="w-full bg-slate-300 rounded-md p-1.5 flex justify-between items-center">
+            <div class="card-link hover:card-link--hover">
                 <div class="font-semibold text">
                     Mecânica Geral
                 </div>
@@ -225,7 +225,7 @@
             </div>
         </a>
         <a href="<?php echo BASE_URL; ?>workorder/<?php echo ($order_info['light_glass_id'] > 0) ? 'lightglass_edit/' . $order_info['light_glass_id'] : 'lightglass_create/' . $order_info['id'] ?>">
-            <div class="w-full bg-slate-300 rounded-md p-1.5 flex justify-between items-center">
+            <div class="card-link hover:card-link--hover">
                 <div class="font-semibold text">
                     Luzes e Vidros
                 </div>
@@ -241,7 +241,7 @@
             </div>
         </a>
         <a href="<?php echo BASE_URL; ?>workorder/<?php echo ($order_info['interior_visual_id'] > 0) ? 'interior_edit/' . $order_info['interior_visual_id'] : 'interior_create/' . $order_info['id'] ?>">
-            <div class="w-full bg-slate-300 rounded-md p-1.5 flex justify-between items-center">
+            <div class="card-link hover:card-link--hover">
                 <div class="font-semibold text">
                     Visual Interior
                 </div>
@@ -261,8 +261,13 @@
 </div>
 
 <div class="input-line justify-center items-center py-3">
+    <?php echo ($order_info['visual_exterior_id'] == 1 && $order_info['tires_id'] == 1 && $order_info['brakes_id'] == 1 && $order_info['steering_system_id'] == 1 && $order_info['fuel_system_id'] == 1 && $order_info['engine_id'] == 1 && $order_info['suspension_id'] == 1 && $order_info['general_items_id'] == 1 && $order_info['light_glass_id'] == 1 && $order_info['interior_visual_id'] == 1) ?>
     <span class="px-1">
-        <a href="<?php echo BASE_URL; ?>workorder/edit/<?php echo $order_info['id']; ?>" class="btn"><i class="fa-solid fa-up-right-from-square"></i> Editar</a>
+        <a href="<?php echo BASE_URL; ?>workorder/report/<?php echo $order_info['id']; ?>" class="btn-success hover:btn-success--hover"><i class="fa-solid fa-up-right-from-square"></i> Gerar Relatório</a>
+    </span>
+    <?php ?>
+    <span class="px-1">
+        <a href="<?php echo BASE_URL; ?>workorder/edit/<?php echo $order_info['id']; ?>" class="btn hover:btn--hover"><i class="fa-solid fa-up-right-from-square"></i> Editar</a>
     </span>
     <span class="px-1">
         <a href="<?php echo BASE_URL; ?>workorder/destroy/<?php echo $order_info['id']; ?>" class="btn-danger hover:btn-danger--hover" onclick="return confirm('Deseja realmente excluir?')"><i class="fa-regular fa-trash-can"></i> Excluir</a>

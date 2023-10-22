@@ -68,6 +68,6 @@
         <textarea name="aditional_info" id="aditional_info" rows="5" class="w-full"></textarea>
     </div>
     <div class="input-line justify-center py-2">
-        <button class="btn hover:btn-hover" type="submit"><i class="fa-solid fa-pen-to-square"></i> SALVAR INFORMAÇÕES</button>
+        <button class="btn hover:btn--hover" type="submit"><i class="fa-solid fa-pen-to-square"></i> SALVAR INFORMAÇÕES</button>
     </div>
 </form>
