@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
 class workorderController extends controller
 {
 	public function __construct()
@@ -1130,7 +1131,7 @@ class workorderController extends controller
 		);
 		header("Location: " . BASE_URL . "workorder/show/" . $workorder_id);
 	}
-	
+
 	public function suspension_create($id)
 	{
 		$u = new Users();
@@ -1157,8 +1158,8 @@ class workorderController extends controller
 		$front_shock_absorber = addslashes($_POST['front_shock_absorber']);
 		$front_shock_absorber_obs = addslashes($_POST['front_shock_absorber_obs']);
 		$rear_shock_absorber = addslashes($_POST['rear_shock_absorber']);
-		$rear_shock_absorber_obs = addslashes($_POST['rear_shock_absorber_obs']); 
-		$bushings = addslashes($_POST['bushings']); 
+		$rear_shock_absorber_obs = addslashes($_POST['rear_shock_absorber_obs']);
+		$bushings = addslashes($_POST['bushings']);
 		$bushings_obs = addslashes($_POST['bushings_obs']);
 		$suspension_pads = addslashes($_POST['suspension_pads']);
 		$suspension_pads_obs = addslashes($_POST['suspension_pads_obs']);
@@ -1212,8 +1213,8 @@ class workorderController extends controller
 		$front_shock_absorber = addslashes($_POST['front_shock_absorber']);
 		$front_shock_absorber_obs = addslashes($_POST['front_shock_absorber_obs']);
 		$rear_shock_absorber = addslashes($_POST['rear_shock_absorber']);
-		$rear_shock_absorber_obs = addslashes($_POST['rear_shock_absorber_obs']); 
-		$bushings = addslashes($_POST['bushings']); 
+		$rear_shock_absorber_obs = addslashes($_POST['rear_shock_absorber_obs']);
+		$bushings = addslashes($_POST['bushings']);
 		$bushings_obs = addslashes($_POST['bushings_obs']);
 		$suspension_pads = addslashes($_POST['suspension_pads']);
 		$suspension_pads_obs = addslashes($_POST['suspension_pads_obs']);
@@ -1277,7 +1278,7 @@ class workorderController extends controller
 		$airbox = addslashes($_POST['airbox']);
 		$airbox_obs = addslashes($_POST['airbox_obs']);
 		$exhaust = addslashes($_POST['exhaust']);
-		$exhaust_obs = addslashes($_POST['exhaust_obs']); 
+		$exhaust_obs = addslashes($_POST['exhaust_obs']);
 		$fixing_cables_wires = addslashes($_POST['fixing_cables_wires']);
 		$fixing_cables_wires_obs = addslashes($_POST['fixing_cables_wires_obs']);
 		$electronic_diagnostics = addslashes($_POST['electronic_diagnostics']);
@@ -1352,7 +1353,7 @@ class workorderController extends controller
 		$airbox = addslashes($_POST['airbox']);
 		$airbox_obs = addslashes($_POST['airbox_obs']);
 		$exhaust = addslashes($_POST['exhaust']);
-		$exhaust_obs = addslashes($_POST['exhaust_obs']); 
+		$exhaust_obs = addslashes($_POST['exhaust_obs']);
 		$fixing_cables_wires = addslashes($_POST['fixing_cables_wires']);
 		$fixing_cables_wires_obs = addslashes($_POST['fixing_cables_wires_obs']);
 		$electronic_diagnostics = addslashes($_POST['electronic_diagnostics']);
@@ -1423,7 +1424,7 @@ class workorderController extends controller
 		$reverse_light = addslashes($_POST['reverse_light']);
 		$reverse_light_obs = addslashes($_POST['reverse_light_obs']);
 		$sensors_cameras = addslashes($_POST['sensors_cameras']);
-		$sensors_cameras_obs = addslashes($_POST['sensors_cameras_obs']); 
+		$sensors_cameras_obs = addslashes($_POST['sensors_cameras_obs']);
 		$dashboard_lights = addslashes($_POST['dashboard_lights']);
 		$dashboard_lights_obs = addslashes($_POST['dashboard_lights_obs']);
 		$interior_lighting = addslashes($_POST['interior_lighting']);
@@ -1538,7 +1539,7 @@ class workorderController extends controller
 		$reverse_light = addslashes($_POST['reverse_light']);
 		$reverse_light_obs = addslashes($_POST['reverse_light_obs']);
 		$sensors_cameras = addslashes($_POST['sensors_cameras']);
-		$sensors_cameras_obs = addslashes($_POST['sensors_cameras_obs']); 
+		$sensors_cameras_obs = addslashes($_POST['sensors_cameras_obs']);
 		$dashboard_lights = addslashes($_POST['dashboard_lights']);
 		$dashboard_lights_obs = addslashes($_POST['dashboard_lights_obs']);
 		$interior_lighting = addslashes($_POST['interior_lighting']);
@@ -1667,7 +1668,7 @@ class workorderController extends controller
 		$onboard_clock = addslashes($_POST['onboard_clock']);
 		$onboard_clock_obs = addslashes($_POST['onboard_clock_obs']);
 		$pcm = addslashes($_POST['pcm']);
-		$pcm_obs = addslashes($_POST['pcm_obs']); 
+		$pcm_obs = addslashes($_POST['pcm_obs']);
 		$audio = addslashes($_POST['audio']);
 		$audio_obs = addslashes($_POST['audio_obs']);
 		$seat_heating = addslashes($_POST['seat_heating']);
@@ -1676,8 +1677,8 @@ class workorderController extends controller
 		$steering_whell_heating_obs = addslashes($_POST['steering_whell_heating_obs']);
 		$seat_memory = addslashes($_POST['seat_memory']);
 		$seat_memory_obs = addslashes($_POST['seat_memory_obs']);
-		$cup_holder = addslashes($_POST['cup_holder']); 
-		$cup_holder_obs = addslashes($_POST['cup_holder_obs']); 
+		$cup_holder = addslashes($_POST['cup_holder']);
+		$cup_holder_obs = addslashes($_POST['cup_holder_obs']);
 		$glove_compartment = addslashes($_POST['glove_compartment']);
 		$glove_compartment_obs = addslashes($_POST['glove_compartment_obs']);
 		$belt_adjustment = addslashes($_POST['belt_adjustment']);
@@ -1810,7 +1811,7 @@ class workorderController extends controller
 		$onboard_clock = addslashes($_POST['onboard_clock']);
 		$onboard_clock_obs = addslashes($_POST['onboard_clock_obs']);
 		$pcm = addslashes($_POST['pcm']);
-		$pcm_obs = addslashes($_POST['pcm_obs']); 
+		$pcm_obs = addslashes($_POST['pcm_obs']);
 		$audio = addslashes($_POST['audio']);
 		$audio_obs = addslashes($_POST['audio_obs']);
 		$seat_heating = addslashes($_POST['seat_heating']);
@@ -1819,8 +1820,8 @@ class workorderController extends controller
 		$steering_whell_heating_obs = addslashes($_POST['steering_whell_heating_obs']);
 		$seat_memory = addslashes($_POST['seat_memory']);
 		$seat_memory_obs = addslashes($_POST['seat_memory_obs']);
-		$cup_holder = addslashes($_POST['cup_holder']); 
-		$cup_holder_obs = addslashes($_POST['cup_holder_obs']); 
+		$cup_holder = addslashes($_POST['cup_holder']);
+		$cup_holder_obs = addslashes($_POST['cup_holder_obs']);
 		$glove_compartment = addslashes($_POST['glove_compartment']);
 		$glove_compartment_obs = addslashes($_POST['glove_compartment_obs']);
 		$belt_adjustment = addslashes($_POST['belt_adjustment']);
@@ -1897,5 +1898,43 @@ class workorderController extends controller
 			$observations
 		);
 		header("Location: " . BASE_URL . "workorder/show/" . $workorder_id);
+	}
+
+	public function report($id)
+	{
+		$data = array();
+		$u = new Users();
+		$order = new WorkOrder();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('workorder')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['order_info'] = $order->getReportPDF($id);
+
+		ob_start();
+		$this->loadView('workorder_pdf', $data);
+		$report = ob_get_contents();
+		ob_end_clean();
+
+
+		$mpdf = new \Mpdf\Mpdf([
+			'mode' => 'utf-8',
+			'margin_left' => 5,
+			'margin_right' => 5,
+			'margin_top' => 5,
+			'margin_bottom' => 5,
+			'margin_header' => 20,
+			'margin_footer' => 20,
+
+		]);
+
+		$mpdf->WriteHTML($report);
+		$mpdf->Output();
+
+		// $data['workorder_id'] = $id;
+
+		// $this->loadView('workorder_pdf', $data);
 	}
 }

@@ -830,6 +830,10 @@ label {
 
      */
 
+.collapse {
+  visibility: collapse;
+}
+
 .absolute {
   position: absolute;
 }
@@ -955,6 +959,10 @@ label {
 
 .w-full {
   width: 100%;
+}
+
+.border-collapse {
+  border-collapse: collapse;
 }
 
 .grid-cols-3 {
@@ -1142,6 +1150,10 @@ label {
 
 .font-semibold {
   font-weight: 600;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 .text-white {

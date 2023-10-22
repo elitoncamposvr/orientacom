@@ -2314,4 +2314,20 @@ class WorkOrder extends model
 		$sql->bindValue(":observations", $observations);
 		$sql->execute();
 	}
+
+	public function  getReportPDF($id){
+		$array = array();
+
+		$sql = $this->db->prepare("SELECT * FROM workorder WHERE id = :id");
+		$sql->bindValue(":id", $id);
+		$sql->execute();
+
+		
+		if ($sql->rowCount() > 0) {
+			$array = $sql->fetch();
+		}
+
+		return $array;
+
+	}
 }
