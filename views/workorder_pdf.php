@@ -24,16 +24,28 @@
             background-color: #e2e8f0;
         }
 
+        .line-mid-dark {
+            background-color: #cbd5e1;
+        }
+
+        .line-dark {
+            background-color: #64748b;
+        }
+
         .border {
             border: 1px solid #e2e8f0;
         }
 
-        .border-dark{
+        .border-dark {
             border: 1px solid #64748b;
         }
 
         .pd-1 {
             padding: 4px;
+        }
+
+        .mb-1 {
+            margin-bottom: 4px;
         }
 
         .text-obs {
@@ -54,131 +66,19 @@
             border: 1px solid #64748b;
         }
 
-        /*
-    .p-title {
-        font-size: 16px;
-        font-weight: bold;
-    }
+        .vertical-line {
+            text-align: center;
+            line-height: 20px;
+            font-size: 18px;
+            background-color: #cbd5e1;
+        }
 
-    .table-line {
-        width: 100%;
-        padding: 0 60px;
-        display: inline-block;
-        margin-bottom: 8px;
-    }
-
-    .py-10 {
-        padding: 10px 0;
-    }
-
-    .title {
-        background-color: black;
-        color: white;
-        border-radius: 6px;
-        font-size: 22px;
-        font-weight: bold;
-        text-align: center;
-        margin: 10px 60px;
-        padding: 5px 0;
-    }
-
-    .label {
-        width: 39%;
-        background-color: black;
-        color: white;
-        float: left;
-        border: 1px solid black;
-        border-radius: 6px;
-        padding: 10px 0;
-        text-align: center;
-        font-weight: bold;
-    }
-
-    .data {
-        width: 59%;
-        float: right;
-        border: 1px solid black;
-        border-radius: 6px;
-        padding: 10px 0;
-        text-align: center;
-    }
-
-    .label-2 {
-        width: 59%;
-        background-color: black;
-        color: white;
-        float: left;
-        border: 1px solid black;
-        border-radius: 6px;
-        padding: 10px 0;
-        text-align: center;
-        font-weight: bold;
-    }
-
-    .data-2 {
-        width: 39%;
-        float: right;
-        border: 1px solid black;
-        border-radius: 6px;
-        padding: 10px 0;
-        text-align: center;
-    }
-
-    .label-3 {
-        width: 46%;
-        background-color: black;
-        color: white;
-        float: left;
-        border: 1px solid black;
-        border-radius: 6px;
-        padding: 10px 0;
-        text-align: center;
-        font-weight: bold;
-    }
-
-    .data-perc {
-        width: 12%;
-        background-color: black;
-        color: white;
-        float: left;
-        border: 1px solid black;
-        border-radius: 6px;
-        padding: 10px 0;
-        text-align: center;
-        font-weight: bold;
-        margin-left: 1%;
-    }
-
-    .data-3 {
-        width: 39%;
-        float: right;
-        border: 1px solid black;
-        border-radius: 6px;
-        padding: 10px 0;
-        text-align: center;
-    }
-
-    h1 {
-        text-align: center;
-        font-size: 20px;
-        margin: 20px;
-        font-weight: 500;
-    }
-
-    .clear {
-        clear: both;
-    }
-
-    footer {
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        text-align: center;
-        border-top: 2px solid #14b8a6;
-    }
-*/
         .center {
             text-align: center;
+        }
+
+        .left{
+            text-align: left;
         }
     </style>
 
@@ -295,15 +195,167 @@
             </tr>
         </table>
     </div>
-    <div class="line border-dark">
+    <div class="line-mid-dark mb-1">
         <table width="100%">
             <tr>
                 <td width="15%">RESPONSÁVEIS</td>
-                <td>Líder Mec. Manut. Autom.: <?php echo $order_info['responsible_consultant'];?></td>
-                <td>Consultor Ténico: <?php echo $order_info['responsible_mechanic'];?></td>
+                <td>Líder Mec. Manut. Autom.: <?php echo $order_info['responsible_consultant']; ?></td>
+                <td>Consultor Ténico: <?php echo $order_info['responsible_mechanic']; ?></td>
             </tr>
         </table>
     </div>
+
+    <div class="line center">
+        RELATÓRIO DE AVALIAÇÃO EXTERIOR - PRÉ COMPRA
+    </div>
+    <div class="border">
+        <table width="100%" class="border">
+            <tr>
+                <td width="3%" class="vertical-line pd-1">
+                    E<br />
+                    X<br />
+                    T<br />
+                    E<br />
+                    R<br />
+                    I<br />
+                    O<br />
+                    R<br />
+                </td>
+                <td class="center">
+                    <table width="100%">
+                        <tr>
+                            <td>
+                                <img src="<?php echo BASE_URL; ?>assets/images/img-vistory.jpg" alt="IMG" width="110%">
+                                <span>VISTA EXTERIOR DO VEÍCULO</span>
+                            </td>
+                        </tr>
+                    </table>
+                    <table width="100%" class="line-mid-dark pd-1">
+                        <tr>
+                            <td>
+                                (OK) - OK
+                            </td>
+                            <td>
+                                (S) - Saliência
+                            </td>
+                            <td>
+                                (F) - Ferrugem
+                            </td>
+                            <td>
+                                (R) - Risco
+                            </td>
+                            <td>
+                                (A) - Amassado
+                            </td>
+                            <td>
+                                (I) - Impacto de Pedras
+                            </td>
+                            <td>
+                                (RT) - Retoque
+                            </td>
+                            <td>
+                                (P) - Repintura
+                            </td>
+                        </tr>
+                    </table>
+                    <table width="100%">
+                        <tr>
+                            <td width="33.33%" class="left">
+                                <table width="100%">
+                                    <tr>
+                                        <td width="10%" class="border center">1</td>
+                                        <td width="10%" class="border center">OK</td>
+                                        <td width="10%" class="border center"></td>
+                                        <td>Capô dianteiro</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%" class="border center">1</td>
+                                        <td width="10%" class="border center">OK</td>
+                                        <td width="10%" class="border center"></td>
+                                        <td>Para-brisas Dianteiro</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%" class="border center">1</td>
+                                        <td width="10%" class="border center">OK</td>
+                                        <td width="10%" class="border center"></td>
+                                        <td>Espelho Retrovisor Direito</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%" class="border center">1</td>
+                                        <td width="10%" class="border center">OK</td>
+                                        <td width="10%" class="border center"></td>
+                                        <td>Farol dianteiro direito</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%" class="border center">1</td>
+                                        <td width="10%" class="border center">OK</td>
+                                        <td width="10%" class="border center"></td>
+                                        <td>Farol dianteiro esquerdo</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%" class="border center">1</td>
+                                        <td width="10%" class="border center">OK</td>
+                                        <td width="10%" class="border center"></td>
+                                        <td>Para-choques dianteiro</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%" class="border center">1</td>
+                                        <td width="10%" class="border center">OK</td>
+                                        <td width="10%" class="border center"></td>
+                                        <td>Espelho retrovisor esquerdo</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%" class="border center">1</td>
+                                        <td width="10%" class="border center">OK</td>
+                                        <td width="10%" class="border center"></td>
+                                        <td>Paralamas dianteiro esquerdo</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%" class="border center">1</td>
+                                        <td width="10%" class="border center">OK</td>
+                                        <td width="10%" class="border center"></td>
+                                        <td>Porta dianteira esquerda</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%" class="border center">1</td>
+                                        <td width="10%" class="border center">OK</td>
+                                        <td width="10%" class="border center"></td>
+                                        <td>Vidro dianteiro esquerdo</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%" class="border center">1</td>
+                                        <td width="10%" class="border center">OK</td>
+                                        <td width="10%" class="border center"></td>
+                                        <td>Porta traseira esquerda</td>
+                                    </tr>
+                                </table>
+                            </td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <td width="33.33%" class="left">TESTE</td>
+                            <td width="33.33%" class="left">TESTE</td>
+                        </tr>
+                    </table>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+
 </body>
 
 </html>
